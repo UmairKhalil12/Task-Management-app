@@ -1,0 +1,59 @@
+/* styles.css */
+  .Page-css {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background: linear-gradient(to bottom, #7896c6, #245a94); 
+  }
+  
+  .asign-contanier {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%; 
+    flex: 1; 
+  }
+  
+  .task-list {
+    width: 600px;
+    background-color: rgba(255, 255, 255, 0.5);
+    color: black;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    
+  }
+
+  .list-container ul{
+    list-style-type: none;
+
+  }
+
+  .list-completed{
+    display: flex;
+    justify-content: space-between;
+    margin: 10px 0;
+  }
+
+  .list-container {
+    list-style: none;
+    padding: 0;
+  }
+    
+  .list-elements {
+    display: flex;
+    align-items: center;
+    margin: 5px 0;
+  }
+  
+  .inpt-chk {
+    margin-right: 10px;
+  }
+  
+  .lst-para {
+    flex: 1;
+    text-align: left;
+  }
+  

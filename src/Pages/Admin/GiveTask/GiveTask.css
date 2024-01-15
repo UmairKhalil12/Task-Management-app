@@ -1,0 +1,17 @@
+.give-task-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background: linear-gradient(to bottom, #7896c6, #245a94); 
+    
+}
+
+.give-task-container-2{
+    text-align: center;
+    background-color: rgba(255, 255, 255, 0.5);
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 2;
+
+}

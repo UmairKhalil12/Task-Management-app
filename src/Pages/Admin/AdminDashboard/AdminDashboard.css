@@ -1,0 +1,57 @@
+.admin-background {
+  background-image: linear-gradient(to bottom, #7896c6, #245a94);
+  overflow: hidden;
+  min-height: 100vh;
+}
+
+.task-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.user-container {
+  padding: 20px;
+  border-radius: 10px;
+  background-color: rgba(255, 255, 255, 0.5);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  position: relative;
+  z-index: 1;
+}
+
+.user-container h3 {
+  text-align: center;
+  color: #333;
+}
+
+.user-container ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+.list {
+  padding: 15px;
+  border-radius: 5px;
+}
+
+.list b {
+  color: #555;
+}
+
+.task-info {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.task-info span {
+  color: #555;
+}
+
+.task-info .completed {
+  color: green;
+}
+
+.task-info .not-completed {
+  color: red;
+}
