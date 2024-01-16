@@ -8,8 +8,7 @@ import VisibilityIcon from '@mui/icons-material/Visibility';
 import VisibilityOffIcon from '@mui/icons-material/VisibilityOff';
 import EmailIcon from '@mui/icons-material/Email';
 import PasswordIcon from '@mui/icons-material/Password';
-import { getAuth, sendPasswordResetEmail } from "firebase/auth";
-import { blue } from '@mui/material/colors';
+import ForgetPassword from '../ForgetPassword/ForgetPassword';
 
 function LoginPage() {
     const [Email, setEmail] = useState('');
@@ -29,21 +28,7 @@ function LoginPage() {
         loginHandler();
     };
 
-    const forgetPassHandler = (email) => {
-        const auth = getAuth();
-        sendPasswordResetEmail(auth, email)
-            .then(() => {
-                window.alert("Password reset email send sucessfully"); 
-                console.log("password reset email and successfully"); 
-            })
-            .catch((error) => {
-                const errorCode = error.code;
-                const errorMessage = error.message;
-                window.alert('error sending password reset link' , errorMessage);
-                console.log('error sending password reset link' , errorMessage)
-            });
-    }
-
+    
     return (
         <div className='background-login'>
             <div className='loginContainer'>
@@ -101,7 +86,7 @@ function LoginPage() {
                             Login
                         </Button>
                         <br/> 
-                        <p style={{color : 'blue' , float : 'left'}} onClick={()=> forgetPassHandler(Email) }>Forgot Password ? send pasword reset email</p>
+                        <p style={{color : 'blue' , float : 'left'}} onClick={()=>navigate('/forgetpassword')}>Forgot Password ? send pasword reset email</p>
                         <p>Dont have an account?</p> <p style={{ color: 'blue' }} onClick={() => { navigate('/signup') }}>Signup</p>
                     </form>
                 </div>

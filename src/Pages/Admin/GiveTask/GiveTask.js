@@ -1,13 +1,9 @@
 import React, { useState } from 'react'
 import { FormLabel} from '@mui/material';
-import { Grid } from '@mui/material';
-import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
 import TextField from '@mui/material/TextField';
-import Typography from '@mui/material/Typography';
 import Select from '@mui/material/Select';
 import MenuItem from '@mui/material/MenuItem';
-import InputLabel from '@mui/material/InputLabel';
 import { getDoc, updateDoc } from 'firebase/firestore';
 import { db } from '../../../FireBase/FireBase';
 import { doc } from 'firebase/firestore';
@@ -16,7 +12,7 @@ import getUsers from '../../User/UserList'
 import SideNav from '../../../Components/Navbar/SideNav';
 import "./GiveTask.css"
 
-function GiveTask() {
+function GiveTask({admin}) {
     const [users, setUsers] = useState([]);
 
     useEffect(() => {
@@ -71,7 +67,7 @@ function GiveTask() {
 
     return (
         <>
-            <SideNav />
+        <SideNav admin={admin} />
             <div className='give-task-container'>
                 <div className='give-task-container-2'>
                     <h3>Assigning Task</h3>
@@ -98,7 +94,7 @@ function GiveTask() {
                         {users.length > 0 ? (
                             users.map((user) => (
                                 <MenuItem key={user.id} value={user.id}>
-                                    {user.email === adminEmail ? null : user.name}
+                                    {user.email === adminEmail ? null : user.email}
                                 </MenuItem>
                             ))
                         ) : (

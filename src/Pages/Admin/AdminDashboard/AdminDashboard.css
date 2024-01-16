@@ -55,3 +55,43 @@
 .task-info .not-completed {
   color: red;
 }
+
+.taskTabel {
+  border-collapse: collapse;
+  width: 100%;
+  margin-top: 20px; 
+}
+
+.taskTabel th, .taskTabel td {
+  
+  border: 1px solid black;
+  padding: 8px;
+  text-align: left;
+}
+
+.taskTabel th {
+  background-color: #f2f2f2;
+}
+
+.taskTabel tr {
+  background-color: #f9f9f9;
+}
+
+.taskTabel tr:hover {
+  background-color: #e5e5e5;
+}
+
+.taskTabel td {
+  position: relative;
+}
+
+.taskTabel td button {
+  position: absolute;
+  /* background: none;
+  border: none;
+  cursor: pointer; */
+}
+
+.taskTabel td button:hover {
+  color: red; /* Adjust the color as needed */
+}

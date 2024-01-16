@@ -33,13 +33,10 @@ const LeftDrawer = ({ open, onClose, admin }) => {
         '& .MuiDrawer-paper': {
           width: '200px',
           transition: 'width 0.3s ease-in-out',
-          backgroundColor: '#ADBFF2',
+          backgroundColor: 'rgba(173, 191, 242, 0.9)',
         },
       }}
     >
-      <div style={{ padding: '16px', backgroundColor: '#283593', color: '#fff' }}>
-        <h2>Task Management</h2>
-      </div>
       <List>
         {admin ? <ListItem button onClick={() => navigate('/home')}> <HomeIcon /> &nbsp; &nbsp;  Home  </ListItem>
           :
@@ -69,21 +66,18 @@ const SideNav = ({ admin }) => {
       <div
         style={{
           position: 'fixed',
-          zIndex: 1200,
-          top: 0,
+          zIndex : 25 , 
+          top: '50%' ,
           left: 0,
           padding: '8px',
           borderRadius: '0 0 4px 4px',
           cursor: 'pointer',
-          backgroundColor: '#283593',
-          color: '#fff',
           display: 'flex',
           alignItems: 'center',
         }}
         onClick={() => setDrawerOpen(true)}
       >
         <MenuIcon style={{ marginRight: '8px' }} />
-        <h2>Task Management</h2>
       </div>
       <LeftDrawer open={drawerOpen} admin={admin} onClose={() => setDrawerOpen(false)} />
     </div>

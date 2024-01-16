@@ -3,7 +3,6 @@ import getUsers from '../../User/UserList';
 import './AdminHomePage.css'
 import SideNav from '../../../Components/Navbar/SideNav'
 import AssignmentIcon from '@mui/icons-material/Assignment';
-import RuleIcon from '@mui/icons-material/Rule';
 import AssignmentTurnedInIcon from '@mui/icons-material/AssignmentTurnedIn';
 import AssignmentLateIcon from '@mui/icons-material/AssignmentLate';
 
@@ -89,9 +88,7 @@ function AdminHomePage({ user, admin }) {
                         <h3>{completeArray.length}</h3>
                     </div>
                 </div>
-
             </div>
-
         </div>
     )
 }

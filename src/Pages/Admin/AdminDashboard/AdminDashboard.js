@@ -3,12 +3,35 @@ import getUsers from '../../User/UserList'
 import { useState, useEffect } from 'react';
 import SideNav from "../../../Components/Navbar/SideNav";
 import DeleteIcon from '@mui/icons-material/Delete';
-import { arrayRemove, collection, doc, getDoc, updateDoc } from "firebase/firestore";
+import { doc, getDoc, updateDoc } from "firebase/firestore";
 import { db } from "../../../FireBase/FireBase";
+import EditIcon from '@mui/icons-material/Edit';
+import Modal from '@mui/material/Modal';
+import Box from '@mui/material/Box';
+import GiveTask from "../GiveTask/GiveTask";
+import EditTask from "../../../Components/EditTask/EditTask";
 
 
 function AdminDashboard({ admin, user }) {
+
+  const style = {
+    position: 'absolute',
+    top: '50%',
+    left: '50%',
+    transform: 'translate(-50%, -50%)',
+    width: 400,
+    bgcolor: 'lightblue',
+    border: '2px solid #000',
+    boxShadow: 24,
+    p: 4,
+  };
+
   const [users, setUsers] = useState([]);
+
+  const [open, setOpen] = useState(false);
+  const handleOpen = () => setOpen(true);
+  const handleClose = () => setOpen(false);
+
   console.log(admin)
 
   useEffect(() => {
@@ -19,10 +42,6 @@ function AdminDashboard({ admin, user }) {
 
     fetchData();
   }, []);
-
-  // const CurrentUserId = user.uid;
-  // console.log("currentUserID ", CurrentUserId);
-
 
   const User = users.filter((element) => user.uid === element.id);
 
@@ -53,7 +72,7 @@ function AdminDashboard({ admin, user }) {
       return user.taskAssigned || []
     })
 
-    const tasksArray = tasksAssigned.map((elements) => {
+    tasksAssigned.map((elements) => {
       elements.map((task) => {
         AllStatusArray.push(task.statusOfTask)
       })
@@ -89,50 +108,88 @@ function AdminDashboard({ admin, user }) {
     }
   };
 
+
   var adminEmail = "umairkhalil024@gmail.com";
 
   return (
     <>
       <SideNav admin={admin} />
 
+      <Modal
+        open={open}
+        onClose={handleClose}
+        aria-labelledby="modal-modal-title"
+        aria-describedby="modal-modal-description"
+      >
+        <Box sx={style}>
+          <EditTask users={users} closeEvent = {handleClose}/> 
+        </Box>
+      </Modal>
+
       <div className="admin-background">
         <h1>Admin dashboard</h1>
-        <h3>Hello , {name}</h3>
+        <h3>Hello, {name}</h3>
         <div className='task-container'>
           <div className='user-container'>
             <br />
             <h3>List of Users</h3>
-            <ul>
-              {users.map((user) => (
-                <li key={user.id} className='list'>
-                  {user.email !== adminEmail && filterUserTasks(user.id).length > 0 && (
-                    <>
-                      <b>{user.name}</b>
-                      <br />
-                      <b><i>Task(s) Assigned</i></b>
-                      <br /> <br />
-                      <div style={{ display: 'flex', flexDirection: 'column' }}>
-                        {filterUserTasks(user.id).map((task, index) => (
-                          <div key={index}>
-                            {task}
-                            <span style={{ marginLeft: '8px', color: filterUserStatusOfTask(user.id)[index] ? 'green' : 'red' }}>
-                              {filterUserStatusOfTask(user.id)[index] ? 'Completed' : 'Not Completed'}
-                            </span>
-                            <button onClick={() => handleTaskDelete(user.id, index)} style={{ float: 'right', background: 'none', border: 'none' }}><DeleteIcon /></button>
-                          </div>
-                        ))}
-                      </div>
-                    </>
-                  )}
-                </li>
-              ))}
+            <table className="taskTabel">
+              <thead>
+                <tr>
+                  <th>Name</th>
+                  <th>Email</th>
+                  <th>Assigned Task(s)</th>
+                  <th>Status of Task</th>
+                  <th>Actions</th>
+                </tr>
+              </thead>
+              <tbody>
+                {users.map((user) => (
+                  <tr key={user.id} className='list'>
+                    {user.email !== adminEmail && filterUserTasks(user.id).length > 0 && (
+                      <>
+                        <td>{user.name}</td>
+                        <td>{user.email}</td>
+                        <td style={{ display: 'flex', flexDirection: 'column' }}>
+                          {filterUserTasks(user.id).map((task, index) => (
+                            <div key={index} style={{ marginBottom: '5px', display: 'flex', alignItems: 'center' }}>
+                              <span style={{ marginRight: '8px' }}>{task}</span>
+                              <br /> <br />
 
-            </ul>
+                            </div>
+                          ))}
+                        </td>
+                        <td>
+                          {filterUserStatusOfTask(user.id).map((status, index) => (
+                            <div key={index} style={{ color: status ? 'green' : 'red' }}>
+                              {status ? 'Completed' : 'Not Completed'}
+                              <br /> <br />
+                            </div>
+                          ))}
+                        </td>
+                        <td>
+                          {filterUserStatusOfTask(user.id).map((status, index) => (
+                            <div>
+                              <button onClick={() => handleTaskDelete(user.id, index)} style={{ background: 'none', border: 'none' }}><DeleteIcon /></button>
+                              &nbsp; &nbsp;  &nbsp; &nbsp; &nbsp;
+                              <button onClick={handleOpen} style={{ background: 'none', border: 'none' }} ><EditIcon /> </button>  &nbsp; &nbsp;  &nbsp; &nbsp;
+                              <br /> <br />
+                            </div>
+                          ))}
+
+                        </td>
+                      </>
+                    )}
+                  </tr>
+                ))}
+              </tbody>
+            </table>
           </div>
         </div>
       </div>
     </>
   );
 }
+
 
 export default AdminDashboard;
