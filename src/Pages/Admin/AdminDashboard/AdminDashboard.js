@@ -32,6 +32,9 @@ function AdminDashboard({ admin, user }) {
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
 
+  const [taskIndex, setTaskIndex] = useState('');
+  const [userId, setUserId] = useState('');
+
   console.log(admin)
 
   useEffect(() => {
@@ -44,7 +47,6 @@ function AdminDashboard({ admin, user }) {
   }, []);
 
   const User = users.filter((element) => user.uid === element.id);
-
   const name = User.map((user) => { return user.name });
 
   const filterUserTasks = (id) => {
@@ -96,8 +98,6 @@ function AdminDashboard({ admin, user }) {
       const updatedTasks = currentTasks.filter((task, index) => index !== taskIndex);
 
       await updateDoc(userRef, { taskAssigned: updatedTasks });
-
-      // Fetch updated data
       const updatedData = await getUsers();
       setUsers(updatedData);
 
@@ -108,6 +108,13 @@ function AdminDashboard({ admin, user }) {
     }
   };
 
+  const handleModal = (index , id) => {
+    setTaskIndex(index);
+    setUserId(id);  
+    // console.log("retreiving task index", taskIndex);
+    // console.log("user id inside handleModal" , id);
+    setOpen(true);
+  };
 
   var adminEmail = "umairkhalil024@gmail.com";
 
@@ -122,7 +129,7 @@ function AdminDashboard({ admin, user }) {
         aria-describedby="modal-modal-description"
       >
         <Box sx={style}>
-          <EditTask users={users} closeEvent = {handleClose}/> 
+          <EditTask users={users} closeEvent = {handleClose} index = {taskIndex} id = {userId} /> 
         </Box>
       </Modal>
 
@@ -172,7 +179,7 @@ function AdminDashboard({ admin, user }) {
                             <div>
                               <button onClick={() => handleTaskDelete(user.id, index)} style={{ background: 'none', border: 'none' }}><DeleteIcon /></button>
                               &nbsp; &nbsp;  &nbsp; &nbsp; &nbsp;
-                              <button onClick={handleOpen} style={{ background: 'none', border: 'none' }} ><EditIcon /> </button>  &nbsp; &nbsp;  &nbsp; &nbsp;
+                              <button onClick={() => handleModal(index , user.id)} style={{ background: 'none', border: 'none' }}  ><EditIcon /> </button>  &nbsp; &nbsp;  &nbsp; &nbsp;
                               <br /> <br />
                             </div>
                           ))}

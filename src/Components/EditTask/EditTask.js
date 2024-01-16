@@ -8,9 +8,12 @@ import IconButton from '@mui/material/IconButton';
 import CloseIcon from "@mui/icons-material/Close"
 import "./EditTask.css"
 
-export default function EditTask({ users  , closeEvent}) {
+export default function EditTask({ users, closeEvent, index, id }) {
 
     const adminEmail = "umairkhalil024@gmail.com";
+    // console.log("EditTask component index prop" , index );
+    // console.log("EditTask component id" , id); 
+    // console.log("users edit task component" , users );
 
     const [select, setSelect] = useState('Choose user to assign task');
     const [task, setTask] = useState('');
@@ -23,8 +26,35 @@ export default function EditTask({ users  , closeEvent}) {
     };
 
     const EditTaskClick = () => {
+        const updatedUsers = [...users];
+        const currentUser = updatedUsers.find(user => user.id === id);
 
-    }
+        if (currentUser) {
+            const updatedTaskAssigned = currentUser.taskAssigned.filter((task, i) => i !== index);
+
+            const newUser = updatedUsers.find(user => user.id === select);
+
+            if (newUser) {
+                newUser.taskAssigned.push({
+                    task: task,
+                    statusOfTask: false,
+                });
+
+                // Update the state or send the updatedUsers to the server, depending on your application's logic
+                //setUsers(updatedUsers); 
+                console.log('Task edited successfully.');
+                window.alert('Task edited successfully')
+            } else {
+                console.error('Selected user not found.');
+                window.alert('Selected user not found');
+            }
+        } else {
+            console.error('Current user not found.');
+            window.alert(console.error);
+        }
+
+        closeEvent(); 
+    };
 
     return (
         <>
