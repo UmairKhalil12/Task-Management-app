@@ -6,54 +6,54 @@ import Select from '@mui/material/Select';
 import MenuItem from '@mui/material/MenuItem';
 import IconButton from '@mui/material/IconButton';
 import CloseIcon from "@mui/icons-material/Close"
-import "./EditTask.css"
+import "./EditTask.css";
+import { doc, getDoc, update, updateDoc } from 'firebase/firestore';
+import { db } from '../../FireBase/FireBase';
 
 export default function EditTask({ users, closeEvent, index, id }) {
 
     const adminEmail = "umairkhalil024@gmail.com";
-    // console.log("EditTask component index prop" , index );
-    // console.log("EditTask component id" , id); 
-    // console.log("users edit task component" , users );
 
-    const [select, setSelect] = useState('Choose user to assign task');
+    // const [select, setSelect] = useState('Choose user to assign task');
     const [task, setTask] = useState('');
     const handleTaskChange = (event) => {
         setTask(event.target.value);
     }
 
-    const handleChange = (event) => {
-        setSelect(event.target.value);
-    };
+    // const handleChange = (event) => {
+    //     setSelect(event.target.value);
+    // };
 
-    const EditTaskClick = () => {
-        const updatedUsers = [...users];
-        const currentUser = updatedUsers.find(user => user.id === id);
 
-        if (currentUser) {
-            const updatedTaskAssigned = currentUser.taskAssigned.filter((task, i) => i !== index);
+    const EditTaskClick = async () => {
+        console.log('select', id);
+        console.log('index', index);
 
-            const newUser = updatedUsers.find(user => user.id === select);
+        try {
+            const userRef = doc(db, 'users', id);
+            const taskSnapshot = await getDoc(userRef); // Use 'getDoc' for document snapshot
 
-            if (newUser) {
-                newUser.taskAssigned.push({
+            if (taskSnapshot.exists()) {
+                const updatedTasks = taskSnapshot.data().taskAssigned || [];
+                updatedTasks[index] = {
                     task: task,
                     statusOfTask: false,
-                });
+                };
 
-                // Update the state or send the updatedUsers to the server, depending on your application's logic
-                //setUsers(updatedUsers); 
+                await updateDoc(userRef, { taskAssigned: updatedTasks }); // Use 'updateDoc' for updating document
+
                 console.log('Task edited successfully.');
-                window.alert('Task edited successfully')
+                window.alert('Task edited successfully');
             } else {
                 console.error('Selected user not found.');
                 window.alert('Selected user not found');
             }
-        } else {
-            console.error('Current user not found.');
-            window.alert(console.error);
+        } catch (error) {
+            console.error('Error while editing task:', error);
+            window.alert('Error while editing task');
         }
 
-        closeEvent(); 
+        closeEvent();
     };
 
     return (
@@ -77,7 +77,7 @@ export default function EditTask({ users, closeEvent, index, id }) {
                         onChange={handleTaskChange}
                         type='string'
                     /> <br /> <br />
-                    <FormLabel htmlFor='task' sx={{ color: 'black' }}> Select user</FormLabel>  &nbsp; &nbsp;
+                    { /* <FormLabel htmlFor='task' sx={{ color: 'black' }}> Select user</FormLabel>  &nbsp; &nbsp;
                     <Select
                         labelId="demo-simple-select-label"
                         size='small'
@@ -96,7 +96,7 @@ export default function EditTask({ users, closeEvent, index, id }) {
                             <MenuItem>No user found</MenuItem>
                         )}
                     </Select>
-                    <br /> <br />
+                        <br /> <br /> */}
                     <Button type='submit' sx={{ color: 'black', border: '1px solid black' }} onClick={EditTaskClick}>Edit Task</Button>
                     <br /> <br />
                 </div>

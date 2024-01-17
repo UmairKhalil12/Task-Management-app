@@ -35,7 +35,7 @@ function AdminDashboard({ admin, user }) {
   const [taskIndex, setTaskIndex] = useState('');
   const [userId, setUserId] = useState('');
 
-  console.log(admin)
+  // console.log(admin)
 
   useEffect(() => {
     const fetchData = async () => {
@@ -67,13 +67,10 @@ function AdminDashboard({ admin, user }) {
 
   const filterUserStatusOfTask = (id) => {
     let AllStatusArray = [];
-
     const userFound = users.filter((element) => element.id === id);
-
     const tasksAssigned = userFound.map((user) => {
       return user.taskAssigned || []
     })
-
     tasksAssigned.map((elements) => {
       elements.map((task) => {
         AllStatusArray.push(task.statusOfTask)
@@ -86,23 +83,16 @@ function AdminDashboard({ admin, user }) {
     try {
       const userRef = doc(db, 'users', userId);
       const userDoc = await getDoc(userRef);
-
       if (!userDoc.exists()) {
         console.error('User document not found.');
         return;
       }
-
       const currentTasks = userDoc.data().taskAssigned || [];
-
-      // Create a new array excluding the task at taskIndex
       const updatedTasks = currentTasks.filter((task, index) => index !== taskIndex);
-
       await updateDoc(userRef, { taskAssigned: updatedTasks });
       const updatedData = await getUsers();
       setUsers(updatedData);
-
       console.log('Task deleted successfully.');
-
     } catch (error) {
       console.error('Error deleting task:', error);
     }
@@ -111,8 +101,6 @@ function AdminDashboard({ admin, user }) {
   const handleModal = (index , id) => {
     setTaskIndex(index);
     setUserId(id);  
-    // console.log("retreiving task index", taskIndex);
-    // console.log("user id inside handleModal" , id);
     setOpen(true);
   };
 

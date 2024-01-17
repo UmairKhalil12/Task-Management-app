@@ -53,6 +53,7 @@ export default function ForgetPassword() {
                         >
                             Send Password Reset Email 
                         </Button>
+                        <p style={{color : 'blue'}} onClick={()=> navigate('/login')}>Login Page</p>
                     </form>
                 </div>
             </div>

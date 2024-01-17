@@ -1,0 +1,66 @@
+.menu-icon-container {
+    position: fixed;
+    z-index: 25;
+    top: 50%;
+    left: 0;
+    padding: 8px;
+    border-radius: 0 0 4px 4px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+  }
+  
+  .drawer-container {
+    width: 200px;
+  }
+  
+  .divider {
+    border: 1px solid grey;
+  }
+
+
+@media (max-width: 768px) {
+    .menu-icon-container {
+        position: fixed;
+        z-index: 25;
+        top: 10%;
+        left: 0;
+        padding: 8px;
+        border-radius: 0 0 4px 4px;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+      }
+      
+      .drawer-container {
+        width: 200px;
+      }
+      
+      .divider {
+        border: 1px solid grey;
+      }
+}
+
+@media (max-width: 480px) {
+    .menu-icon-container {
+        position: fixed;
+        z-index: 25;
+        top: 3%;
+        left: 0;
+        padding: 8px;
+        border-radius: 0 0 4px 4px;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+      }
+      
+      .drawer-container {
+        width: 200px;
+      }
+      
+      .divider {
+        border: 1px solid grey;
+      }
+
+
+}
