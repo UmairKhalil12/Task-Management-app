@@ -1,5 +1,7 @@
+// SideNav.js
+
 import React, { useState } from 'react';
-import Modal from '@mui/material/Modal';
+//import Modal from '@mui/material/Modal';
 import List from '@mui/material/List';
 import ListItem from '@mui/material/ListItem';
 import MenuIcon from '@mui/icons-material/Menu';
@@ -7,12 +9,12 @@ import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 import HomeIcon from '@mui/icons-material/Home';
 import AddTaskIcon from '@mui/icons-material/AddTask';
 import ListIcon from '@mui/icons-material/List';
+import ExitToAppIcon from '@mui/icons-material/ExitToApp';
 import { useNavigate } from 'react-router-dom';
 import { auth } from '../../FireBase/FireBase';
-import ExitToAppIcon from '@mui/icons-material/ExitToApp';
 import './SideNav.css';
 
-const LeftDrawer = ({ open, onClose, admin }) => {
+const Sidebar = ({ open, onClose, admin }) => {
   const navigate = useNavigate();
 
   const handleSignOut = () => {
@@ -26,43 +28,38 @@ const LeftDrawer = ({ open, onClose, admin }) => {
   };
 
   return (
-    <Modal
-      open={open}
-      onClose={onClose}
-      className="drawer-container"
-    >
-      <div>
-        <List>
-          {admin ? (
-            <ListItem button onClick={() => navigate('/home')}>
-              <HomeIcon /> &nbsp; &nbsp; Home
-            </ListItem>
-          ) : (
-            <ListItem button onClick={() => navigate('/home')}>
-              <HomeIcon /> &nbsp; &nbsp; Home
-            </ListItem>
-          )}
-
-          {admin ? (
-            <ListItem button onClick={() => navigate('/admin')}>
-              <ListIcon /> &nbsp; &nbsp; View Task
-            </ListItem>
-          ) : null}
-
-          {admin ? (
-            <ListItem button onClick={() => navigate('/assigntask')}>
-              <AddTaskIcon /> &nbsp; &nbsp; Assign Task
-            </ListItem>
-          ) : null}
-        </List>
-        <List>
-          <hr className="divider" />
-          <ListItem button onClick={handleSignOut}>
-            <ExitToAppIcon /> &nbsp; &nbsp; SignOut
-          </ListItem>
-        </List>
+    <div className={`sidebar ${open ? 'open' : ''}`}>
+      <div className="top-menu">
+        <div className="menu-icon-container" onClick={onClose}>
+          {open ? <ArrowBackIcon /> : <MenuIcon />}
+        </div>
       </div>
-    </Modal>
+      <List>
+        <ListItem button onClick={() => navigate('/home')}>
+          {open ? <HomeIcon /> : <HomeIcon />} &nbsp; &nbsp;
+          {open && <span className="text">Home</span>}
+        </ListItem>
+
+        {admin && (
+          <ListItem button onClick={() => navigate('/admin')}>
+            {open ? <ListIcon /> : <ListIcon />} &nbsp; &nbsp;
+            {open && <span className="text">View Task</span>}
+          </ListItem>
+        )}
+
+        {admin && (
+          <ListItem button onClick={() => navigate('/assigntask')}>
+            {open ? <AddTaskIcon /> : <AddTaskIcon />} &nbsp; &nbsp;
+            {open && <span className="text">Assign Task</span>}
+          </ListItem>
+        )}
+        <hr className='divider'/>
+        <ListItem button onClick={handleSignOut}>
+          {open ? <ExitToAppIcon /> : <ExitToAppIcon />} &nbsp; &nbsp;
+          {open && <span className="text">Sign Out</span>}
+        </ListItem>
+      </List>
+    </div>
   );
 };
 
@@ -72,17 +69,8 @@ const SideNav = ({ admin }) => {
 
   return (
     <div>
-      <div
-        className="menu-icon-container"
-        onClick={() => setDrawerOpen(!drawerOpen)}
-      >
-        {drawerOpen ? (
-          <ArrowBackIcon style={{ marginRight: '8px' }} />
-        ) : (
-          <MenuIcon style={{ marginRight: '8px' }} />
-        )}
-      </div>
-      <LeftDrawer open={drawerOpen} onClose={() => setDrawerOpen(false)} admin={admin} />
+      <Sidebar open={drawerOpen} onClose={() => setDrawerOpen(!drawerOpen)} admin={admin} />
+
     </div>
   );
 };

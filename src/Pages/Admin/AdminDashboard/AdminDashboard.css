@@ -2,6 +2,7 @@
   background-image: linear-gradient(to bottom, #7896c6, #245a94);
   overflow: hidden;
   min-height: 100vh;
+  margin-left: 60px;
 }
 
 .task-container {
@@ -99,6 +100,7 @@
     background-image: linear-gradient(to bottom, #7896c6, #245a94);
     overflow: hidden;
     min-height: 100vh;
+    margin-left: 60px;
   }
   
   .task-container {
@@ -198,6 +200,7 @@
     background-image: linear-gradient(to bottom, #7896c6, #245a94);
     overflow: hidden;
     min-height: 100vh;
+    margin-left: 60px;
   }
   
   .task-container {

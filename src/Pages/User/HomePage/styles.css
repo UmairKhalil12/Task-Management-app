@@ -6,6 +6,7 @@
   align-items: center;
   height: 100vh;
   background: linear-gradient(to bottom, #7896c6, #245a94);
+  margin-left: 60px;
 }
 
 .asign-contanier {
@@ -66,6 +67,7 @@
     align-items: center;
     height: 100vh;
     background: linear-gradient(to bottom, #7896c6, #245a94);
+    margin-left: 60px;
   }
 
   .asign-contanier {
@@ -126,6 +128,7 @@
     align-items: center;
     height: 100vh;
     background: linear-gradient(to bottom, #7896c6, #245a94);
+    margin-left: 60px;
   }
 
   .asign-contanier {
