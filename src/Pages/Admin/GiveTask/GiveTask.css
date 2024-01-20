@@ -3,58 +3,71 @@
     justify-content: center;
     align-items: center;
     height: 100vh;
-    background: linear-gradient(to bottom, #7896c6, #245a94); 
+    background: linear-gradient(to bottom, #7896c6, #245a94);
     margin-left: 60px;
-    
 }
 
-.give-task-container-2{
+.give-task-container-2 {
     text-align: center;
     background-color: rgba(255, 255, 255, 0.5);
     padding: 20px;
     border-radius: 10px;
     box-shadow: 2;
+    width: 400px;
 
 }
 
-@media (max-width: 768px){
-    .give-task-container {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        height: 100vh;
-        background: linear-gradient(to bottom, #7896c6, #245a94); 
-        margin-left: 60px;
-        
-    }
-    
-    .give-task-container-2{
+.date-container {
+    width: 33%;
+}
+
+.date-container-main{
+    width: 100%;
+    display: flex;
+
+}
+
+@media (max-width: 768px) {
+    .give-task-container-2 {
         text-align: center;
         background-color: rgba(255, 255, 255, 0.5);
         padding: 20px;
         border-radius: 10px;
         box-shadow: 2;
+        width: 400px;
     
     }
+    
+    .date-container {
+        width: 33%;
+    }
+    
+    .date-container-main{
+        width: 100%;
+        display: flex;
+    
+    }
+    
 }
 
-@media (max-width: 480px){
-    .give-task-container {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        height: 100vh;
-        background: linear-gradient(to bottom, #7896c6, #245a94); 
-        margin-left: 60px;
-        
-    }
-    
-    .give-task-container-2{
+@media (max-width: 480px) {
+    .give-task-container-2 {
         text-align: center;
         background-color: rgba(255, 255, 255, 0.5);
         padding: 20px;
         border-radius: 10px;
         box-shadow: 2;
+        width: 400px;
+    
+    }
+    
+    .date-container {
+        width: 33%;
+    }
+    
+    .date-container-main{
+        width: 100%;
+        display: flex;
     
     }
 

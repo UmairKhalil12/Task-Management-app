@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { FormLabel} from '@mui/material';
+import { FormLabel } from '@mui/material';
 import Button from '@mui/material/Button';
 import TextField from '@mui/material/TextField';
 import Select from '@mui/material/Select';
@@ -10,9 +10,10 @@ import { doc } from 'firebase/firestore';
 import { useEffect } from "react";
 import getUsers from '../../User/UserList'
 import SideNav from '../../../Components/Navbar/SideNav';
+import TextareaAutosize from '@mui/material/TextareaAutosize';
 import "./GiveTask.css"
 
-function GiveTask({admin}) {
+function GiveTask({ admin }) {
     const [users, setUsers] = useState([]);
 
     useEffect(() => {
@@ -28,6 +29,10 @@ function GiveTask({admin}) {
 
     const [select, setSelect] = useState('Choose user to assign task');
     const [task, setTask] = useState('');
+    const [StartDate, setStartDate] = useState('');
+    const [EndDate, setEndDate] = useState('');
+    const [TaskDescription, SetTaskDescription] = useState('');
+
     const handleTaskChange = (event) => {
         setTask(event.target.value);
     }
@@ -35,6 +40,18 @@ function GiveTask({admin}) {
     const handleChange = (event) => {
         setSelect(event.target.value);
     };
+
+    const handleStartDateChange = (event) => {
+        setStartDate(event.target.value);
+    }
+
+    const handleEndDateChange = (event) => {
+        setEndDate(event.target.value);
+    }
+
+    const handleTaskDescription = (event) => {
+        SetTaskDescription(event.target.value);
+    }
 
     const AssignTaskClick = async (event) => {
         event.preventDefault();
@@ -46,7 +63,13 @@ function GiveTask({admin}) {
             const userSnapshot = await getDoc(userDocRef);
             const currentTasks = userSnapshot.data().taskAssigned || [];
 
-            const newTask = { task: task, statusOfTask: false };
+            const newTask = {
+                task: task,
+                statusOfTask: 'In-proress',
+                taskStartDate: StartDate,
+                taskEndDate: EndDate,
+                taskDescription: TaskDescription
+            };
 
             const updatedTasks = currentTasks.filter(taskObj => taskObj.task !== newTask.task);
 
@@ -64,25 +87,90 @@ function GiveTask({admin}) {
 
     };
 
+    const startDateObj = new Date(StartDate);
+    const endDateObj = new Date(EndDate);
+
 
     return (
         <>
-        <SideNav admin={admin} />
+            <SideNav admin={admin} />
             <div className='give-task-container'>
                 <div className='give-task-container-2'>
                     <h3>Assigning Task</h3>
-                    <br/> <br/>
-                    <FormLabel htmlFor='task' sx={{color : 'black'}}>Enter Task</FormLabel> <br />
+
+                    <FormLabel htmlFor='task' sx={{ color: 'black', width: '200px' }}>Enter Task</FormLabel> <br />
                     <TextField
                         id="standard-basic"
                         value={task}
-                        label={task}
                         variant="outlined"
                         size='small'
                         onChange={handleTaskChange}
                         type='string'
-                    /> <br/> <br/>
-                    <FormLabel htmlFor='task' sx={{color : 'black'}}> Select user</FormLabel>  &nbsp; &nbsp; 
+                        fullWidth
+                    />
+                    <br /> <br />
+
+                    <FormLabel htmlFor='task' sx={{ color: 'black', width: '200px' }}>Task Description</FormLabel> <br />
+                    <TextareaAutosize
+                        id="filled-multiline-flexible"
+                        value={TaskDescription}
+                        onChange={handleTaskDescription}
+                        minRows={4}
+                        style={{ width: '100%', backgroundColor: 'transparent' }}
+                    />
+
+                    <br /> <br />
+
+                    <div className='date-container-main'>
+
+                        <div className='date-container'>
+                            <FormLabel htmlFor='startTask' sx={{ color: 'black' }}>Start Date</FormLabel> <br />
+                            <TextField
+                                id="standard-basic"
+                                value={StartDate}
+                                variant="outlined"
+                                size='small'
+                                onChange={handleStartDateChange}
+                                type='date'
+                                fullWidth
+                            />
+                        </div>
+
+                        &nbsp; &nbsp;
+
+                        <div className='date-container'>
+                            <FormLabel htmlFor='endDate' sx={{ color: 'black' }}>End Date</FormLabel> <br />
+                            <TextField
+                                id="standard-basic"
+                                value={EndDate}
+                                variant="outlined"
+                                size='small'
+                                onChange={handleEndDateChange}
+                                type='date'
+                                fullWidth
+                            />
+                        </div>
+
+                        &nbsp; &nbsp;
+
+                        <div className='date-container'>
+                            <FormLabel htmlFor='endDate' sx={{ color: 'black' }}>days</FormLabel> <br />
+                            <TextField
+                                id="standard-basic"
+                                variant="outlined"
+                                size='small'
+                                value={Math.ceil((endDateObj - startDateObj) / (1000 * 60 * 60 * 24)).toString()}
+                                type='string'
+                                fullWidth
+                                disabled
+                            />
+                        </div>
+
+                    </div>
+
+                    <br /> <br />
+
+                    <FormLabel htmlFor='task' sx={{ color: 'black' }}> Select user</FormLabel>  &nbsp; &nbsp;
                     <Select
                         labelId="demo-simple-select-label"
                         size='small'
@@ -101,9 +189,10 @@ function GiveTask({admin}) {
                             <MenuItem>No user found</MenuItem>
                         )}
                     </Select>
-                    <br/> <br/> 
-                    <Button type='submit' sx={{ color: 'black', border: '1px solid black' }} onClick={AssignTaskClick}>Assign Task</Button>
-                    <br/> <br/> 
+
+                    <br /> <br />
+                    <Button type='submit' sx={{ border: '1px solid #3576D2' }} onClick={AssignTaskClick}>Assign Task</Button>
+                    <br /> <br />
                 </div>
             </div>
         </>

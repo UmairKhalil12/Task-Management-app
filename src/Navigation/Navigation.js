@@ -7,9 +7,8 @@ import { useState, useEffect } from 'react';
 import { auth } from "../FireBase/FireBase";
 import { onAuthStateChanged } from "firebase/auth";
 import GiveTask from "../Pages/Admin/GiveTask/GiveTask";
-import AdminHomePage from "../Pages/Admin/AdminHomePage/AdminHomePage";
+import AdminHomePage from "../Pages/AdminHomePage/AdminHomePage";
 import ForgetPassword from "../Pages/Auth/ForgetPassword/ForgetPassword";
-
 
 function Navigation() {
   const [currentUser, setCurrentUser] = useState(null);

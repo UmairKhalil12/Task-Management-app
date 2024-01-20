@@ -1,7 +1,4 @@
-// SideNav.js
-
 import React, { useState } from 'react';
-//import Modal from '@mui/material/Modal';
 import List from '@mui/material/List';
 import ListItem from '@mui/material/ListItem';
 import MenuIcon from '@mui/icons-material/Menu';

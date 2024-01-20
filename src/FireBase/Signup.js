@@ -31,7 +31,15 @@ function Signup({ email, password, name, gender }) {
           email: userCredential.user.email,
           tasksAssigned: [
             {
-
+              task : '',
+              statusOfTask: '',
+              taskStartDate: '',
+              taskEndDate: '',
+              taskDescription : '', 
+              taskUpdateDate : '',
+              taskUpdateStartTime : '',
+              taskUpdateEndTime : '',
+              taskUpdateDescription : '',
             }
           ],
           phone: "",
@@ -41,8 +49,8 @@ function Signup({ email, password, name, gender }) {
         console.log("User created successfully:", userCredential.user);
         console.log("Details added successfully. Document ID:", detailsDocRef.id);
         window.alert("User has been registered successfully: " + userCredential.user.email);
-        const user = auth.currentUser; 
-        console.log('auth.currentusr',user); 
+        const user = auth.currentUser;
+        console.log('auth.currentusr', user);
         sendEmailVerification(user)
           .then(() => {
             console.log('Verification email sent');

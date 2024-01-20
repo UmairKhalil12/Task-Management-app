@@ -8,7 +8,6 @@ import VisibilityIcon from '@mui/icons-material/Visibility';
 import VisibilityOffIcon from '@mui/icons-material/VisibilityOff';
 import EmailIcon from '@mui/icons-material/Email';
 import PasswordIcon from '@mui/icons-material/Password';
-import ForgetPassword from '../ForgetPassword/ForgetPassword';
 
 function LoginPage() {
     const [Email, setEmail] = useState('');
@@ -94,5 +93,4 @@ function LoginPage() {
         </div>
     );
 }
-
 export default LoginPage;

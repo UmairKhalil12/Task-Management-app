@@ -29,12 +29,8 @@ function Login({ email, password }) {
                     window.alert(error);
                     console.log(error);
                 })
-
         }
     }
     return handleLogin;
-
 };
-
-
 export default Login;

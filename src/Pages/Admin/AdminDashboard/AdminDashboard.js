@@ -8,7 +8,6 @@ import { db } from "../../../FireBase/FireBase";
 import EditIcon from '@mui/icons-material/Edit';
 import Modal from '@mui/material/Modal';
 import Box from '@mui/material/Box';
-import GiveTask from "../GiveTask/GiveTask";
 import EditTask from "../../../Components/EditTask/EditTask";
 
 
@@ -34,9 +33,6 @@ function AdminDashboard({ admin, user }) {
 
   const [taskIndex, setTaskIndex] = useState('');
   const [userId, setUserId] = useState('');
-
-  // console.log(admin)
-
   useEffect(() => {
     const fetchData = async () => {
       const userData = await getUsers();
@@ -44,7 +40,7 @@ function AdminDashboard({ admin, user }) {
     };
 
     fetchData();
-  }, []);
+  }, );
 
   const User = users.filter((element) => user.uid === element.id);
   const name = User.map((user) => { return user.name });
@@ -122,12 +118,10 @@ function AdminDashboard({ admin, user }) {
       </Modal>
 
       <div className="admin-background">
-        <h1>Admin dashboard</h1>
-        <h3>Hello, {name}</h3>
         <div className='task-container'>
           <div className='user-container'>
             <br />
-            <h3>List of Users</h3>
+            <h3>Assigned Tasks & Users</h3>
             <table className="taskTabel">
               <thead>
                 <tr>

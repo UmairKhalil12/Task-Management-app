@@ -1,183 +1,94 @@
 /* styles.css */
+
+body {
+  margin: 0;
+  padding: 0;
+}
+
 .Page-css {
   display: flex;
   flex-direction: column;
-  justify-content: center;
   align-items: center;
+  justify-content: center;
   height: 100vh;
   background: linear-gradient(to bottom, #7896c6, #245a94);
   margin-left: 60px;
 }
 
-.asign-contanier {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 100%;
-  flex: 1;
-}
-
 .task-list {
-  width: 600px;
+  width: 80%;
+  width: 1000px;
   background-color: rgba(255, 255, 255, 0.5);
   color: black;
   padding: 20px;
   border-radius: 10px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+  margin-top: 20px;
 }
 
-.list-container ul {
-  list-style-type: none;
-
-}
-
-.list-completed {
-  display: flex;
-  justify-content: space-between;
-  margin: 10px 0;
+.task-list h1 {
+  font-size: 24px;
+  margin-bottom: 20px;
 }
 
 .list-container {
-  list-style: none;
-  padding: 0;
+  overflow-x: auto;
 }
 
-.list-elements {
-  display: flex;
-  align-items: center;
-  margin: 5px 0;
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 15px;
 }
 
-.inpt-chk {
-  margin-right: 10px;
-}
-
-.lst-para {
-  flex: 1;
+th,
+td {
+  padding: 12px;
   text-align: left;
+  border-bottom: 1px solid #ddd;
+}
+
+th {
+  background-color: inherit;
+}
+
+td {
+  word-wrap: break-word;
+  max-width: 200px;
+}
+
+tr:hover {
+  background-color: lightblue;
+}
+
+td:first-child {
+  font-weight: bold;
+}
+
+td:nth-child(1){
+  width: 180px;
+}
+
+td:nth-child(2){
+  width: 80px;
+}
+
+td:nth-child(3){
+  width: 200px;
+}
+
+td:nth-child(4),
+td:nth-child(5) {
+  width: 100px;
 }
 
 
 @media (max-width: 768px) {
   .Page-css {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    background: linear-gradient(to bottom, #7896c6, #245a94);
-    margin-left: 60px;
-  }
-
-  .asign-contanier {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 100%;
-    flex: 1;
+    margin-left: 0;
   }
 
   .task-list {
-    width: 600px;
-    background-color: rgba(255, 255, 255, 0.5);
-    color: black;
-    padding: 20px;
-    border-radius: 10px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-
-  }
-
-  .list-container ul {
-    list-style-type: none;
-
-  }
-
-  .list-completed {
-    display: flex;
-    justify-content: space-between;
-    margin: 10px 0;
-  }
-
-  .list-container {
-    list-style: none;
-    padding: 0;
-  }
-
-  .list-elements {
-    display: flex;
-    align-items: center;
-    margin: 5px 0;
-  }
-
-  .inpt-chk {
-    margin-right: 10px;
-  }
-
-  .lst-para {
-    flex: 1;
-    text-align: left;
-  }
-}
-
-@media (max-width: 480px) {
-  .Page-css {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    background: linear-gradient(to bottom, #7896c6, #245a94);
-    margin-left: 60px;
-  }
-
-  .asign-contanier {
-    display: flex;
-    justify-content: center;
-    align-items: center;
     width: 100%;
-    flex: 1;
   }
-
-  .task-list {
-    width: 600px;
-    background-color: rgba(255, 255, 255, 0.5);
-    color: black;
-    padding: 20px;
-    border-radius: 10px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-
-  }
-
-  .list-container ul {
-    list-style-type: none;
-
-  }
-
-  .list-completed {
-    display: flex;
-    justify-content: space-between;
-    margin: 10px 0;
-  }
-
-  .list-container {
-    list-style: none;
-    padding: 0;
-  }
-
-  .list-elements {
-    display: flex;
-    align-items: center;
-    margin: 5px 0;
-  }
-
-  .inpt-chk {
-    margin-right: 10px;
-  }
-
-  .lst-para {
-    flex: 1;
-    text-align: left;
-  }
-
 }
