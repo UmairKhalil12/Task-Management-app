@@ -76,7 +76,7 @@ function GiveTask({ admin }) {
             updatedTasks.push(newTask);
 
             await updateDoc(userDocRef, {
-                taskAssigned: updatedTasks
+                tasksAssigned: updatedTasks
             });
 
             window.alert('Task assigned successfully');

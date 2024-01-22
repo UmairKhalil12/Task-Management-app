@@ -1,20 +1,27 @@
-import React, { useState } from 'react'
+import React, { useState , useEffect } from 'react'
 import Button from '@mui/material/Button';
 import TextField from '@mui/material/TextField';
 import Select from '@mui/material/Select';
 import { FormLabel, MenuItem } from '@mui/material';
 import TextareaAutosize from '@mui/material/TextareaAutosize';
 import "./UpdateTask.css"
-import { doc, getDoc, setDoc } from 'firebase/firestore';
+import {  doc, getDoc, setDoc} from 'firebase/firestore';
 import { db } from '../../FireBase/FireBase';
 
-function UpdateTask({ user, index }) {
+function UpdateTask({ user, index, onClose }) {
     console.log(user);
     const [StartTime, setStartTime] = useState('');
     const [EndTime, setEndTime] = useState('');
     const [UpdateTaskDescription, setUpdateTaskDescription] = useState('');
     const [LocationSelect, setLocationSelect] = useState('');
     const [Status, setStatus] = useState('');
+    const [date, setDate] = useState('');
+
+    useEffect(() => {
+        const today = new Date();
+        const formattedDate = today.toISOString().split('T')[0];
+        setDate(formattedDate);
+    }, []);
 
     const handleUpdateTaskDescription = (event) => {
         setUpdateTaskDescription(event.target.value)
@@ -51,26 +58,35 @@ function UpdateTask({ user, index }) {
         const userDocRef = doc(db, 'users', user.uid);
 
         try {
-            const userSnapshot = await getDoc(userDocRef);
-            const currentTasks = userSnapshot.data().taskAssigned || [];
-
             const newTask = {
                 statusOfTask: Status,
                 taskUpdateStartTime: StartTime,
                 taskUpdateEndTime: EndTime,
-                taskUpdateDescription: UpdateTaskDescription
+                taskUpdateDescription: UpdateTaskDescription,
+                taskUpdateDate : date,
+                taskUpdateLocation : LocationSelect,
+                taskUpdateHours : `${hours} hour(s) and ${minutes} minute(s)`
             };
+            const userSnapshot = await getDoc(userDocRef);
+            const userData = userSnapshot.data() || {};
 
-            const updatedTasks = [...currentTasks, newTask];
-
-            await setDoc(userDocRef, { taskAssigned: updatedTasks }, { merge: true });
+            const currentTasksAssigned = userData.tasksAssigned || [];
+            if (index >= 0 && index < currentTasksAssigned.length) {
+                currentTasksAssigned[index] = {
+                    ...currentTasksAssigned[index],
+                    ...newTask
+                };
+            }
+            await setDoc(userDocRef, { ...userData, tasksAssigned: currentTasksAssigned });
 
             window.alert('Task assigned successfully');
+            onClose();
         } catch (error) {
             console.error('Error updating document:', error);
             window.alert('Error assigning task. Please check the console for details.');
         }
     };
+
 
     return (
         <div>
@@ -89,7 +105,7 @@ function UpdateTask({ user, index }) {
                     <br /> <br />
 
                     <div className='date-container-main'>
-                        <div className='container-2'>
+                        <div className='container-3'>
                             <FormLabel htmlFor='startTime' sx={{ color: 'black' }}>Start Time</FormLabel> <br />
                             <TextField
                                 id="standard-basic"
@@ -104,7 +120,7 @@ function UpdateTask({ user, index }) {
 
                         &nbsp; &nbsp;
 
-                        <div className='container-2'>
+                        <div className='container-3'>
                             <FormLabel htmlFor='endTime' sx={{ color: 'black' }}>End Time</FormLabel> <br />
                             <TextField
                                 id="standard-basic"
@@ -116,6 +132,22 @@ function UpdateTask({ user, index }) {
                                 fullWidth
                             />
                         </div>
+
+                        &nbsp; &nbsp;
+
+                        <div className='container-3'>
+                            <FormLabel htmlFor='startTask' sx={{ color: 'black' }}>Date</FormLabel> <br />
+                            <TextField
+                                id="standard-basic"
+                                value={date}
+                                variant="outlined"
+                                size='small'
+                                disabled
+                                type='date'
+                                fullWidth
+                            />
+                        </div>
+
                     </div>
 
                     <br /> <br />

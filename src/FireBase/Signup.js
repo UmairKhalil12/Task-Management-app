@@ -31,15 +31,11 @@ function Signup({ email, password, name, gender }) {
           email: userCredential.user.email,
           tasksAssigned: [
             {
-              task : '',
+              task: '',
               statusOfTask: '',
               taskStartDate: '',
               taskEndDate: '',
-              taskDescription : '', 
-              taskUpdateDate : '',
-              taskUpdateStartTime : '',
-              taskUpdateEndTime : '',
-              taskUpdateDescription : '',
+              taskDescription: '',
             }
           ],
           phone: "",

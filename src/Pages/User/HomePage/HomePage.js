@@ -1,15 +1,13 @@
 import "./styles.css";
 import { useState, useEffect } from 'react';
-import { db } from "../../../FireBase/FireBase";
-import { doc, getDoc, updateDoc } from "firebase/firestore";
 import getUsers from "../UserList";
 import SideNav from '../../../Components/Navbar/SideNav'
 import Box from '@mui/material/Box';
-import Button from '@mui/material/Button';
-import Typography from '@mui/material/Typography';
 import Modal from '@mui/material/Modal';
 import UpgradeIcon from '@mui/icons-material/Upgrade';
 import UpdateTask from "../../../Components/UpdateTask/UpdateTask";
+import PreviewIcon from '@mui/icons-material/Preview';
+import ViewTask from "../../../Components/ViewTask/ViewTask";
 
 
 const style = {
@@ -17,20 +15,26 @@ const style = {
   top: '50%',
   left: '50%',
   transform: 'translate(-50%, -50%)',
-  width: 400,
   bgcolor: 'background.paper',
   border: '2px solid #000',
   boxShadow: 24,
   p: 4,
+  width : 'auto'
 };
 
 function HomePage({ currentUser }) {
+  console.log("homepage currentUser" , currentUser);
   const [users, setUsers] = useState([]);
   const [Updateindex, setUpdateindex] = useState('');
+
 
   const [open, setOpen] = useState(false);
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
+
+  const [ViewOpen, setViewOpen] = useState(false);
+  const handleViewOpen = () => setViewOpen(true);
+  const handleViewClose = () => setViewOpen(false);
 
 
   useEffect(() => {
@@ -43,44 +47,20 @@ function HomePage({ currentUser }) {
   }, []);
 
   const User = users.filter(element => currentUser.uid === element.id);
-  // console.log('homepage filter user', User);
 
-  const userTasksAssigned = User.map((user) => user.taskAssigned || User[0]?.taskAssigned || [])
-  // console.log('homepage usertaskarray', userTasksAssigned);
-
-  const userId = User.map((user) => user.id);
+  const userTasksAssigned = User.map((user) => user.tasksAssigned || User[0]?.tasksAssigned || [])
+  
   const name = User.map((user) => user.name);
-  // console.log('name', name)
 
   const handleUpdateButton = (index) => {
     handleOpen();
     setUpdateindex(index);
   }
 
-  // const toggleComplete = async (taskIndex) => {
-  //   try {
-  //     const userRef = doc(db, 'users', userId[0]);
-  //     const userDoc = await getDoc(userRef);
-
-  //     if (!userDoc.exists()) {
-  //       console.error('User document not found.');
-  //       return;
-  //     }
-
-  //     const updatedTasks = userDoc.data().taskAssigned.map((task, index) => {
-  //       if (index === taskIndex) {
-  //         return { ...task, statusOfTask: !task.statusOfTask };
-  //       }
-  //       return task;
-  //     });
-
-  //     await updateDoc(userRef, { taskAssigned: updatedTasks });
-  //     // console.log('Tasks updated successfully.');
-
-  //   } catch (error) {
-  //     console.error('Error updating task status:', error);
-  //   }
-  // };
+  const handleViewButton = (index) => {
+    handleViewOpen();
+    setUpdateindex(index);
+  }
 
   return (
     <>
@@ -93,7 +73,18 @@ function HomePage({ currentUser }) {
         aria-describedby="modal-modal-description"
       >
         <Box sx={style}>
-          <UpdateTask user={currentUser} index= {Updateindex} />
+          <UpdateTask user={currentUser} index={Updateindex} onClose={handleClose} />
+        </Box>
+      </Modal>
+
+      <Modal
+        open={ViewOpen}
+        onClose={handleViewClose}
+        aria-labelledby="modal-modal-title"
+        aria-describedby="modal-modal-description"
+      >
+        <Box sx={style}>
+        <ViewTask users = {users} currentUser = {currentUser} />
         </Box>
       </Modal>
 
@@ -113,7 +104,7 @@ function HomePage({ currentUser }) {
                     <th>Description</th>
                     <th>Start Date</th>
                     <th>End Date</th>
-                    <th>Update </th>
+                    <th>Actions</th>
                   </tr>
                 </thead>
                 <tbody>
@@ -127,7 +118,22 @@ function HomePage({ currentUser }) {
                             <td>{e.taskDescription}</td>
                             <td>{e.taskStartDate}</td>
                             <td>{e.taskEndDate}</td>
-                            <td> <button style={{ border: 'none', backgroundColor: 'transparent' }} onClick={() => handleUpdateButton(index)}> <UpgradeIcon fontSize="large" /> </button></td>
+                            <td>
+                              <div className="btn-homepage">
+                                <button
+                                  style={{ border: 'none', backgroundColor: 'transparent' }}
+                                  onClick={() => handleUpdateButton(index)}>
+                                  <UpgradeIcon fontSize="large" />
+                                </button>
+
+                                <button
+                                  style={{ border: 'none', backgroundColor: 'transparent' }}
+                                  onClick={() => handleViewButton(index)}>
+                                  <PreviewIcon fontSize="large" />
+                                </button>
+
+                              </div>
+                            </td>
                           </tr>
                         ))
                       ) : (

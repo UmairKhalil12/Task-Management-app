@@ -50,7 +50,7 @@ function AdminDashboard({ admin, user }) {
     const userFound = users.filter((element) => element.id === id);
 
     const tasksAssigned = userFound.map((user) => {
-      return user.taskAssigned || []
+      return user.tasksAssigned || []
     })
 
     tasksAssigned.map((elements) => {
@@ -65,7 +65,7 @@ function AdminDashboard({ admin, user }) {
     let AllStatusArray = [];
     const userFound = users.filter((element) => element.id === id);
     const tasksAssigned = userFound.map((user) => {
-      return user.taskAssigned || []
+      return user.tasksAssigned || []
     })
     tasksAssigned.map((elements) => {
       elements.map((task) => {
@@ -83,9 +83,9 @@ function AdminDashboard({ admin, user }) {
         console.error('User document not found.');
         return;
       }
-      const currentTasks = userDoc.data().taskAssigned || [];
+      const currentTasks = userDoc.data().tasksAssigned || [];
       const updatedTasks = currentTasks.filter((task, index) => index !== taskIndex);
-      await updateDoc(userRef, { taskAssigned: updatedTasks });
+      await updateDoc(userRef, { tasksAssigned: updatedTasks });
       const updatedData = await getUsers();
       setUsers(updatedData);
       console.log('Task deleted successfully.');
@@ -150,8 +150,8 @@ function AdminDashboard({ admin, user }) {
                         </td>
                         <td>
                           {filterUserStatusOfTask(user.id).map((status, index) => (
-                            <div key={index} style={{ color: status ? 'green' : 'red' }}>
-                              {status ? 'Completed' : 'Not Completed'}
+                            <div key={index} >
+                              {status}
                               <br /> <br />
                             </div>
                           ))}

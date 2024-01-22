@@ -82,6 +82,10 @@ td:nth-child(5) {
   width: 100px;
 }
 
+.btn-homepage{
+  display: flex;
+}
+
 
 @media (max-width: 768px) {
   .Page-css {
