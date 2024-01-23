@@ -23,9 +23,10 @@ const style = {
 };
 
 function HomePage({ currentUser }) {
-  console.log("homepage currentUser" , currentUser);
+  // console.log("homepage currentUser" , currentUser);
   const [users, setUsers] = useState([]);
   const [Updateindex, setUpdateindex] = useState('');
+  const [ViewIndex , setViewIndex] = useState(''); 
 
 
   const [open, setOpen] = useState(false);
@@ -59,7 +60,7 @@ function HomePage({ currentUser }) {
 
   const handleViewButton = (index) => {
     handleViewOpen();
-    setUpdateindex(index);
+    setViewIndex(index);
   }
 
   return (
@@ -84,17 +85,17 @@ function HomePage({ currentUser }) {
         aria-describedby="modal-modal-description"
       >
         <Box sx={style}>
-        <ViewTask users = {users} currentUser = {currentUser} />
+        <ViewTask users = {users} currentUser = {currentUser} taskIndex = {ViewIndex} />
         </Box>
       </Modal>
 
       <div className="Page-css">
 
-        <h1>Home Page</h1>
+       {/* <h1>Home Page</h1> */ }
         <h2>Welcome, {name}</h2>
         <div className="task-list">
           <div>
-            <h1>Task Assigned</h1>
+            <h1>Task(s) Assigned</h1>
             <div className="list-container">
               <table>
                 <thead>
@@ -122,13 +123,13 @@ function HomePage({ currentUser }) {
                               <div className="btn-homepage">
                                 <button
                                   style={{ border: 'none', backgroundColor: 'transparent' }}
-                                  onClick={() => handleUpdateButton(index)}>
+                                  onClick={() => handleUpdateButton(subIndex)}>
                                   <UpgradeIcon fontSize="large" />
                                 </button>
 
                                 <button
                                   style={{ border: 'none', backgroundColor: 'transparent' }}
-                                  onClick={() => handleViewButton(index)}>
+                                  onClick={() => handleViewButton(subIndex)}>
                                   <PreviewIcon fontSize="large" />
                                 </button>
 

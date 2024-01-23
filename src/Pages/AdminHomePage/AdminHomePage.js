@@ -1,11 +1,10 @@
 import { useState, useEffect } from 'react';
 import getUsers from '../User/UserList';
-import './AdminHomePage.css'
-import SideNav from '../../Components/Navbar/SideNav'
+import './AdminHomePage.css';
+import SideNav from '../../Components/Navbar/SideNav';
 import AssignmentIcon from '@mui/icons-material/Assignment';
 import AssignmentTurnedInIcon from '@mui/icons-material/AssignmentTurnedIn';
 import AssignmentLateIcon from '@mui/icons-material/AssignmentLate';
-
 
 function AdminHomePage({ user, admin }) {
     const [users, setUsers] = useState([]);
@@ -19,73 +18,75 @@ function AdminHomePage({ user, admin }) {
         fetchData();
     }, []);
 
-
     const User = users.filter((element) => user.uid === element.id);
-
     const name = User.map((user) => { return user.name });
 
+    let AllStatusArray = [];
     const filterUserStatusOfTask = (id) => {
-        let AllStatusArray = [];
-
         const userFound = users.filter((element) => element.id === id);
-
         const tasksAssigned = userFound.map((user) => {
-            return user.taskAssigned || []
+            return user.tasksAssigned || []
         })
-
         tasksAssigned.map((elements) => {
             elements.map((task) => {
                 AllStatusArray.push(task.statusOfTask)
             })
+
         })
+
         return AllStatusArray;
     };
 
-    let completeArray = [];
-    let inCompleteArray = [];
-
-    users.forEach((user, userIndex) => {
-        filterUserStatusOfTask(user.id).forEach((status, index) => {
-            if (status === false) {
-                inCompleteArray.push(status)
+    let completeCount = 0;
+    let inProgressCount = 0;
+    let notCompletedCount = 0;
+    
+    users.map((user) => {
+        let completeArray = [];
+        let inProgressArray = [];
+        let notCompletedArray = [];
+    
+        filterUserStatusOfTask(user.id).map((status) => {
+            if (status === 'Completed') {
+                completeArray.push(status);
+            } else if (status === 'In-progress') {
+                inProgressArray.push(status);
+            } else if (status === 'Not Completed') {
+                notCompletedArray.push(status);
             }
-            else {
-                completeArray.push(status)
-            }
-        })
-    })
-
-    console.log('inCompleteArray', inCompleteArray);
-    console.log('CompleteArray', completeArray);
-
-
+        });
+    
+        completeCount += completeArray.length;
+        inProgressCount += inProgressArray.length;
+        notCompletedCount += notCompletedArray.length;
+    });
+    
+    console.log('in-progress', inProgressCount);
+    console.log('completed task', completeCount);
+    console.log('Notcompleted task', notCompletedCount);
 
     return (
         <div className='admin-home-background'>
-        <div>
             <SideNav admin={admin} />
-
-           
-                <h1>Welcome , {name}</h1>
+            <div>
+                <h1>Welcome, {name}</h1>
                 <div className='information-container'>
-
-                    <div className='count-total-task'>
+                    <div className='count-card'>
+                        <AssignmentIcon className='count-card-icon' />
                         <h2>Total Task(s)</h2>
-                        <AssignmentIcon fontSize='large' />
-                        <h3>{inCompleteArray.length + completeArray.length}</h3>
-
+                        <h3>{completeCount + inProgressCount + notCompletedCount}</h3>
                     </div>
 
-                    <div className='count-incomplete-task'>
-                        <h2>In-Complete task(s)</h2>
-                        <AssignmentLateIcon fontSize='large' />
-                        <h3>{inCompleteArray.length}</h3>
+                    <div className='count-card'>
+                        <AssignmentLateIcon className='count-card-icon' />
+                        <h2>In-Progress Task(s)</h2>
+                        <h3>{inProgressCount}</h3>
                     </div>
 
-                    <div className='count-completed-task'>
-                        <h2>Complete task(s)</h2>
-                        <AssignmentTurnedInIcon fontSize='large' />
-                        <h3>{completeArray.length}</h3>
+                    <div className='count-card'>
+                        <AssignmentTurnedInIcon className='count-card-icon' />
+                        <h2>Complete Task(s)</h2>
+                        <h3>{completeCount}</h3>
                     </div>
                 </div>
             </div>
@@ -93,4 +94,4 @@ function AdminHomePage({ user, admin }) {
     )
 }
 
-export default AdminHomePage
+export default AdminHomePage;

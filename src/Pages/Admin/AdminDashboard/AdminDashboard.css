@@ -58,34 +58,32 @@
   color: red;
 }
 
-.taskTabel {
-  border-collapse: collapse;
+.taskTabel{
   width: 100%;
-  margin-top: 20px; 
+  border-collapse: collapse;
+  margin-top: 15px;
 }
 
-.taskTabel th, .taskTabel td {
-  
-  border: 1px solid black;
-  padding: 8px;
+.taskTabel th,
+td {
+  padding: 12px;
   text-align: left;
+  border-bottom: 1px solid #ddd;
 }
 
 .taskTabel th {
-  background-color: #f2f2f2;
-}
-
-.taskTabel tr {
-  background-color: #f9f9f9;
-}
-
-.taskTabel tr:hover {
-  background-color: #e5e5e5;
+  background-color: inherit;
 }
 
 .taskTabel td {
-  position: relative;
+  word-wrap: break-word;
+  max-width: 200px;
 }
+
+.taskTabel tr:hover {
+  background-color: lightblue;
+}
+
 
 .taskTabel td button {
   position: absolute;

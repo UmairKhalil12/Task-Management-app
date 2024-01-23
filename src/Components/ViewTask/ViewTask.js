@@ -1,6 +1,7 @@
 
-export default function ViewTask({ users, currentUser }) {
-    console.log('viewtask',currentUser);
+export default function ViewTask({ users, currentUser, taskIndex }) {
+    // console.log('viewtask',currentUser);
+    console.log(taskIndex, 'taskindexto viewed')
     const User = users.filter(element => currentUser.uid === element.id);
     const userTasksAssigned = User.map((user) => user.tasksAssigned || User[0]?.tasksAssigned || [])
     return (
@@ -27,16 +28,26 @@ export default function ViewTask({ users, currentUser }) {
                                     userTasksAssigned.map((element, index) => (
                                         element.length > 0 ? (
                                             element.map((e, subIndex) => (
-                                                <tr key={subIndex}>
-                                                    <td>{e.task}</td>
-                                                    <td>{e.statusOfTask}</td>
-                                                    <td>{e.taskUpdateDescription}</td>
-                                                    <td>{e.taskUpdateLocation}</td>
-                                                    <td>{e.taskUpdateDate}</td>
-                                                    <td>{e.taskUpdateStartTime}</td>
-                                                    <td>{e.taskUpdateEndTime}</td>
-                                                    <td>{e.taskUpdateHours}</td>
-                                                </tr>
+                                                subIndex === taskIndex ? (
+                                                    <tr key={subIndex}>
+                                                        {e.taskUpdateDescription === '' || e.taskUpdateLocation === ''
+                                                            || e.taskUpdateDate === '' || e.taskUpdateStartTime || e.taskUpdateEndTime === ''
+                                                            || e.taskUpdateHours === '' ? (
+                                                            <>
+                                                                <td>{e.task}</td>
+                                                                <td>{e.statusOfTask}</td>
+                                                                <td>{e.taskUpdateDescription}</td>
+                                                                <td>{e.taskUpdateLocation}</td>
+                                                                <td>{e.taskUpdateDate}</td>
+                                                                <td>{e.taskUpdateStartTime}</td>
+                                                                <td>{e.taskUpdateEndTime}</td>
+                                                                <td>{e.taskUpdateHours}</td>
+                                                            </>
+
+                                                        ) : 'No update found'
+                                                        }
+
+                                                    </tr>) : ''
                                             ))
                                         ) : (
                                             <tr key={index}>

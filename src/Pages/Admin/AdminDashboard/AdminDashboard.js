@@ -40,9 +40,12 @@ function AdminDashboard({ admin, user }) {
     };
 
     fetchData();
-  }, );
+  },);
 
   const User = users.filter((element) => user.uid === element.id);
+  const notAdminUser = users.filter((element) => user.email === element.email);
+  // console.log('notadminuser' , notAdminUser); 
+  // console.log(users); 
   const name = User.map((user) => { return user.name });
 
   const filterUserTasks = (id) => {
@@ -94,9 +97,9 @@ function AdminDashboard({ admin, user }) {
     }
   };
 
-  const handleModal = (index , id) => {
+  const handleModal = (index, id) => {
     setTaskIndex(index);
-    setUserId(id);  
+    setUserId(id);
     setOpen(true);
   };
 
@@ -113,7 +116,7 @@ function AdminDashboard({ admin, user }) {
         aria-describedby="modal-modal-description"
       >
         <Box sx={style}>
-          <EditTask users={users} closeEvent = {handleClose} index = {taskIndex} id = {userId} /> 
+          <EditTask users={users} closeEvent={handleClose} index={taskIndex} id={userId} />
         </Box>
       </Modal>
 
@@ -135,22 +138,35 @@ function AdminDashboard({ admin, user }) {
               <tbody>
                 {users.map((user) => (
                   <tr key={user.id} className='list'>
-                    {user.email !== adminEmail && filterUserTasks(user.id).length > 0 && (
+                    {user.email !== adminEmail && filterUserTasks(user.id).length > 0  &&(
                       <>
-                        <td>{user.name}</td>
-                        <td>{user.email}</td>
-                        <td style={{ display: 'flex', flexDirection: 'column' }}>
+                        <td>
+                          {
+                            (<div >
+                              {user.name}
+                              <br/> <br/> 
+                            </div>)
+                          }
+                        </td>
+                        <td>
+                          {
+                            (<div >
+                              {user.email}
+                              <br/> <br/>
+                            </div>)
+                          }
+                        </td>
+                        <td >
                           {filterUserTasks(user.id).map((task, index) => (
-                            <div key={index} style={{ marginBottom: '5px', display: 'flex', alignItems: 'center' }}>
-                              <span style={{ marginRight: '8px' }}>{task}</span>
+                            <div key={index} style={{ margin: '5px', display: 'flex', alignItems: 'center' }}>
+                              {task}
                               <br /> <br />
-
                             </div>
                           ))}
                         </td>
-                        <td>
+                        <td style={{ width: '120px' }}>
                           {filterUserStatusOfTask(user.id).map((status, index) => (
-                            <div key={index} >
+                            <div key={index} style={{ margin: '5px', display: 'flex', alignItems: 'center' }}>
                               {status}
                               <br /> <br />
                             </div>
@@ -158,10 +174,10 @@ function AdminDashboard({ admin, user }) {
                         </td>
                         <td>
                           {filterUserStatusOfTask(user.id).map((status, index) => (
-                            <div>
+                            <div key={index} style={{ margin: '5px', alignItems: 'center' }}>
                               <button onClick={() => handleTaskDelete(user.id, index)} style={{ background: 'none', border: 'none' }}><DeleteIcon /></button>
                               &nbsp; &nbsp;  &nbsp; &nbsp; &nbsp;
-                              <button onClick={() => handleModal(index , user.id)} style={{ background: 'none', border: 'none' }}  ><EditIcon /> </button>  &nbsp; &nbsp;  &nbsp; &nbsp;
+                              <button onClick={() => handleModal(index, user.id)} style={{ background: 'none', border: 'none' }}  ><EditIcon /> </button>  &nbsp; &nbsp;  &nbsp; &nbsp;
                               <br /> <br />
                             </div>
                           ))}

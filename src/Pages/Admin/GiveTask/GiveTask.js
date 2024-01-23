@@ -4,7 +4,7 @@ import Button from '@mui/material/Button';
 import TextField from '@mui/material/TextField';
 import Select from '@mui/material/Select';
 import MenuItem from '@mui/material/MenuItem';
-import { getDoc, updateDoc } from 'firebase/firestore';
+import { arrayUnion, getDoc, updateDoc } from 'firebase/firestore';
 import { db } from '../../../FireBase/FireBase';
 import { doc } from 'firebase/firestore';
 import { useEffect } from "react";
@@ -61,22 +61,17 @@ function GiveTask({ admin }) {
 
         try {
             const userSnapshot = await getDoc(userDocRef);
-            const currentTasks = userSnapshot.data().taskAssigned || [];
-
+        
             const newTask = {
                 task: task,
-                statusOfTask: 'In-proress',
+                statusOfTask: 'In-progress',
                 taskStartDate: StartDate,
                 taskEndDate: EndDate,
                 taskDescription: TaskDescription
             };
-
-            const updatedTasks = currentTasks.filter(taskObj => taskObj.task !== newTask.task);
-
-            updatedTasks.push(newTask);
-
+             
             await updateDoc(userDocRef, {
-                tasksAssigned: updatedTasks
+                tasksAssigned: arrayUnion(newTask)
             });
 
             window.alert('Task assigned successfully');
