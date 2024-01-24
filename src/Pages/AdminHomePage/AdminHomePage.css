@@ -3,7 +3,7 @@
     justify-content: space-around;
     align-items: center;
     height: 100vh;
-    margin-left: 60px;
+    margin-left: 170px;
   }
   
   .information-container {
@@ -14,7 +14,7 @@
   .count-card {
     background-color: #fff;
     border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
     padding: 20px;
     display: flex;
     flex-direction: column;

@@ -11,7 +11,7 @@ import { useNavigate } from 'react-router-dom';
 import { auth } from '../../FireBase/FireBase';
 import './SideNav.css';
 
-const Sidebar = ({ open, onClose, admin }) => {
+const Sidebar = ({ open, onClose, admin, Users }) => {
   const navigate = useNavigate();
 
   const handleSignOut = () => {
@@ -32,17 +32,19 @@ const Sidebar = ({ open, onClose, admin }) => {
         </div>
       </div>
       <List>
+
         <ListItem button onClick={() => navigate('/home')}>
           {open ? <HomeIcon /> : <HomeIcon />} &nbsp; &nbsp;
           {open && <span className="text">Home</span>}
         </ListItem>
 
-        {admin && (
-          <ListItem button onClick={() => navigate('/admin')}>
-            {open ? <ListIcon /> : <ListIcon />} &nbsp; &nbsp;
-            {open && <span className="text">View Task</span>}
-          </ListItem>
-        )}
+
+
+        <ListItem button onClick={() => navigate('/dashboard')}>
+          {open ? <ListIcon /> : <ListIcon />} &nbsp; &nbsp;
+          {open && <span className="text">View Task</span>}
+        </ListItem>
+
 
         {admin && (
           <ListItem button onClick={() => navigate('/assigntask')}>
@@ -50,7 +52,9 @@ const Sidebar = ({ open, onClose, admin }) => {
             {open && <span className="text">Assign Task</span>}
           </ListItem>
         )}
-        <hr className='divider'/>
+
+        <hr className='divider' />
+
         <ListItem button onClick={handleSignOut}>
           {open ? <ExitToAppIcon /> : <ExitToAppIcon />} &nbsp; &nbsp;
           {open && <span className="text">Sign Out</span>}
