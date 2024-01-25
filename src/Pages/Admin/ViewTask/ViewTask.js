@@ -78,6 +78,36 @@ function ViewTask({ admin, user }) {
     return AllStatusArray;
   };
 
+  const filterStartDate = (id) => {
+    let AllStartDate = [];
+    const userFound = users.filter((element) => element.id === id);
+    const tasksAssigned = userFound.map((user) => {
+      return user.tasksAssigned || []
+    })
+    tasksAssigned.map((elements) => {
+      elements.map((task) => {
+        AllStartDate.push(task.taskStartDate)
+      })
+    })
+    return AllStartDate;
+
+  }
+
+  const filterEndDate = (id) => {
+    let AllEndDate = [];
+    const userFound = users.filter((element) => element.id === id);
+    const tasksAssigned = userFound.map((user) => {
+      return user.tasksAssigned || []
+    })
+    tasksAssigned.map((elements) => {
+      elements.map((task) => {
+        AllEndDate.push(task.taskEndDate)
+      })
+    })
+    return AllEndDate;
+
+  }
+
   const handleTaskDelete = async (userId, taskIndex) => {
     try {
       const userRef = doc(db, 'users', userId);
@@ -132,19 +162,21 @@ function ViewTask({ admin, user }) {
                   <th>Email</th>
                   <th>Assigned Task(s)</th>
                   <th>Status of Task</th>
+                  <th>Task Assign Date</th>
+                  <th>Task Completition Date</th>
                   <th>Actions</th>
                 </tr>
               </thead>
               <tbody>
                 {users.map((user) => (
                   <tr key={user.id} className='list'>
-                    {user.email !== adminEmail && filterUserTasks(user.id).length > 0  &&(
+                    {user.email !== adminEmail && filterUserTasks(user.id).length > 0 && (
                       <>
                         <td>
                           {
                             (<div >
                               {user.name}
-                              <br/> <br/> 
+                              <br /> <br />
                             </div>)
                           }
                         </td>
@@ -152,7 +184,7 @@ function ViewTask({ admin, user }) {
                           {
                             (<div >
                               {user.email}
-                              <br/> <br/>
+                              <br /> <br />
                             </div>)
                           }
                         </td>
@@ -168,6 +200,22 @@ function ViewTask({ admin, user }) {
                           {filterUserStatusOfTask(user.id).map((status, index) => (
                             <div key={index} style={{ margin: '5px', display: 'flex', alignItems: 'center' }}>
                               {status}
+                              <br /> <br />
+                            </div>
+                          ))}
+                        </td>
+                        <td >
+                          {filterStartDate(user.id).map((StartDate, index) => (
+                            <div key={index} style={{ margin: '5px', display: 'flex', alignItems: 'center' }}>
+                              {StartDate}
+                              <br /> <br />
+                            </div>
+                          ))}
+                        </td>
+                        <td >
+                          {filterEndDate(user.id).map((EndDate, index) => (
+                            <div key={index} style={{ margin: '5px', display: 'flex', alignItems: 'center' }}>
+                              {EndDate}
                               <br /> <br />
                             </div>
                           ))}

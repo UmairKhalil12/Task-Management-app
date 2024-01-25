@@ -9,6 +9,9 @@ import AssignmentLateIcon from '@mui/icons-material/AssignmentLate';
 function AdminHomePage({ user, admin }) {
     const [users, setUsers] = useState([]);
 
+    console.log(admin, 'admin adminhomepage');
+    console.log(user, 'admin adminhomepage');
+
     useEffect(() => {
         const fetchData = async () => {
             const userData = await getUsers();
@@ -54,6 +57,9 @@ function AdminHomePage({ user, admin }) {
         filterUserStatusOfTask(user.id)
     })
 
+
+
+
     console.log('in-progress', inProgressCount);
     console.log('completed task', completeCount);
     console.log('Notcompleted task', notCompletedCount);
@@ -61,8 +67,9 @@ function AdminHomePage({ user, admin }) {
     return (
         <>
             <div className='admin-home-background'>
-                <SideNav admin={admin} Users = {Users} />
+                <SideNav admin={admin} Users={Users} />
                 <div>
+                    <h1>Dashboard</h1>
                     <div className='information-container'>
                         <div className='count-card'>
                             <AssignmentIcon className='count-card-icon' />
@@ -88,6 +95,7 @@ function AdminHomePage({ user, admin }) {
                             <h3>{completeCount}</h3>
                         </div>
                     </div>
+
                 </div>
             </div>
         </>

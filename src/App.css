@@ -6,7 +6,6 @@ body{
   background-size: cover;
   background-position: center;
   color: black;
- 
 }
 
 .App{
@@ -14,7 +13,9 @@ body{
   justify-content: center;
   align-items: center;
   background: linear-gradient(to bottom, #7896c6, #245a94); 
-  height: 100vh;
+  min-height: 100vh;
+  min-width: 1200px;
+
 }
 
 

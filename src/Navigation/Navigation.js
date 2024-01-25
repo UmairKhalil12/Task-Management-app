@@ -45,8 +45,7 @@ function Navigation() {
               <Route path="/dashboard" element={<HomePage currentUser={isUser} />} />
               <Route path="/" element={<HomePage currentUser={isUser} />} />
               <Route path="*" element={<HomePage currentUser={isUser} />} />
-              <Route path ="/home" element = {<Dashboard user ={isUser} admin = {isAdmin} />} />
-
+              <Route path ="/home" element = {<Dashboard user={isUser} admin={isAdmin} />}   />
             </>
           )}
           {!isAdmin && !currentUser && (

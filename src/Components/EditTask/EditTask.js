@@ -84,7 +84,7 @@ export default function EditTask({ users, closeEvent, index, id }) {
                     >
                         <CloseIcon />
                     </IconButton>
-                    <h3>Assigning Task</h3>
+                    <h3>Editing Task</h3>
                     <br /> <br />
                     <FormLabel htmlFor='task' sx={{ color: 'black' }}>Enter Task</FormLabel> <br />
                     <TextField
