@@ -40,7 +40,7 @@ const Sidebar = ({ open, onClose, admin, Users }) => {
 
 
 
-        <ListItem button onClick={() => navigate('/dashboard')}>
+        <ListItem button onClick={() => navigate('/viewtask')}>
           {open ? <ListIcon /> : <ListIcon />} &nbsp; &nbsp;
           {open && <span className="text">View Task</span>}
         </ListItem>

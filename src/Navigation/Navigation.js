@@ -2,14 +2,14 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import LoginPage from '../Pages/Auth/LoginPage/LoginPage';
 import SignupPage from "../Pages/Auth/SignupPage/SignupPage";
 import HomePage from "../Pages/User/HomePage/HomePage";
-import ViewTask from "../Pages/Admin/ViewTask/ViewTask";
+import ViewAllTask from "../Pages/Admin/ViewAllTask/ViewAllTask";
 import { useState, useEffect } from 'react';
 import { auth } from "../FireBase/FireBase";
 import { onAuthStateChanged } from "firebase/auth";
 import GiveTask from "../Pages/Admin/GiveTask/GiveTask";
-import AdminHomePage from "../Pages/AdminHomePage/AdminHomePage";
+import Dashboard from "../Pages/Dashboard/Dashboard";
 import ForgetPassword from "../Pages/Auth/ForgetPassword/ForgetPassword";
-import Dashboard from "../Pages/User/Dashboard/Dashboard";
+
 
 function Navigation() {
   const [currentUser, setCurrentUser] = useState(null);
@@ -32,20 +32,20 @@ function Navigation() {
         <Routes>
           {isAdmin && (
             <>
-              <Route path="/dashboard" element={<ViewTask admin={isAdmin} user={isUser} />} />
-              <Route path="/" element={<ViewTask admin={isAdmin} user={isUser} />} />
-              <Route path='/home' element={<AdminHomePage user={isUser} admin={isAdmin} />} />
+              <Route path="/viewtask" element={<ViewAllTask admin={isAdmin} user={isUser} />} />
+              <Route path="/" element={<ViewAllTask admin={isAdmin} user={isUser} />} />
+              <Route path='/home' element={<Dashboard user={isUser} admin={isAdmin} />} />
               <Route path='/assigntask' element={<GiveTask admin={isAdmin} />} />
-              <Route path='*' element={<ViewTask admin={isAdmin} user={isUser} />} />
+              <Route path='*' element={<ViewAllTask admin={isAdmin} user={isUser} />} />
 
             </>
           )}
           {currentUser && (
             <>
-              <Route path="/dashboard" element={<HomePage currentUser={isUser} />} />
+              <Route path="/viewtask" element={<HomePage currentUser={isUser} />} />
               <Route path="/" element={<HomePage currentUser={isUser} />} />
               <Route path="*" element={<HomePage currentUser={isUser} />} />
-              <Route path ="/home" element = {<Dashboard user={isUser} admin={isAdmin} />}   />
+              <Route path ="/home" element={<Dashboard user={isUser} admin={isAdmin} />}   />
             </>
           )}
           {!isAdmin && !currentUser && (

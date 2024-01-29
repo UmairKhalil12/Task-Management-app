@@ -177,7 +177,7 @@ function GiveTask({ admin }) {
                         {users.length > 0 ? (
                             users.map((user) => (
                                 <MenuItem key={user.id} value={user.id}>
-                                    {user.email === adminEmail ? null : user.email}
+                                    {user.email}
                                 </MenuItem>
                             ))
                         ) : (

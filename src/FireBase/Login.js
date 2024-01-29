@@ -19,7 +19,7 @@ function Login({ email, password }) {
                     window.alert('User logged in successfully : ', cred.user.email);
 
                     if (cred.user.email === 'umairkhalil024@gmail.com') {
-                        navigate('/admin');
+                        navigate('/home');
                     } else {
                         navigate('/home');
                     }

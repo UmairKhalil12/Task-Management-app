@@ -1,0 +1,268 @@
+.admin-background {
+  background-image: linear-gradient(to bottom, #7896c6, #245a94);
+  overflow: hidden;
+  min-height: 100vh;
+  margin-left: 60px;
+}
+
+.task-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.user-container {
+  padding: 20px;
+  border-radius: 10px;
+  background-color: rgba(255, 255, 255, 0.5);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  position: relative;
+  z-index: 1;
+}
+
+
+.taskTabel th,
+.taskTabel td {
+  padding: 8px;
+  /* Reduced padding */
+  text-align: left;
+  border-bottom: 1px solid #ddd;
+  font-size: 14px;
+  /* Reduced font size */
+}
+
+.taskTabel th {
+  background-color: inherit;
+}
+
+.taskTabel td {
+  word-wrap: break-word;
+  max-width: 200px;
+}
+
+.taskTabel tr {
+  height: 40px;
+  /* Reduced row height */
+}
+
+.taskTabel tr:hover {
+  background-color: inherit;
+  /* Remove hover effect if desired */
+}
+
+.taskTabel td button {
+  position: absolute;
+}
+
+.taskTabel td button:hover {
+  color: red;
+}
+
+
+.taskTabel td button {
+  position: absolute;
+
+}
+
+.taskTabel td button:hover {
+  color: red;
+}
+
+@media (max-width: 768px) {
+  .admin-background {
+    background-image: linear-gradient(to bottom, #7896c6, #245a94);
+    overflow: hidden;
+    min-height: 100vh;
+    margin-left: 60px;
+  }
+
+  .task-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+  }
+
+  .user-container {
+    padding: 20px;
+    border-radius: 10px;
+    background-color: rgba(255, 255, 255, 0.5);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    position: relative;
+    z-index: 1;
+  }
+
+  .user-container h3 {
+    text-align: center;
+    color: #333;
+  }
+
+  .user-container ul {
+    list-style-type: none;
+    padding: 0;
+  }
+
+  .list {
+    padding: 15px;
+    border-radius: 5px;
+  }
+
+  .list b {
+    color: #555;
+  }
+
+  .task-info {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .task-info span {
+    color: #555;
+  }
+
+  .task-info .completed {
+    color: green;
+  }
+
+  .task-info .not-completed {
+    color: red;
+  }
+
+  .taskTabel {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 15px;
+  }
+
+  .taskTabel th,
+  td {
+    padding: 12px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+  }
+
+  .taskTabel th {
+    background-color: inherit;
+  }
+
+  .taskTabel td {
+    word-wrap: break-word;
+    max-width: 200px;
+  }
+
+  .taskTabel tr:hover {
+    background-color: lightblue;
+  }
+
+
+  .taskTabel td button {
+    position: absolute;
+
+  }
+
+  .taskTabel td button:hover {
+    color: red;
+  }
+
+}
+
+@media (max-width: 480px) {
+  .admin-background {
+    background-image: linear-gradient(to bottom, #7896c6, #245a94);
+    overflow: hidden;
+    min-height: 100vh;
+    margin-left: 60px;
+  }
+
+  .task-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+  }
+
+  .user-container {
+    padding: 20px;
+    border-radius: 10px;
+    background-color: rgba(255, 255, 255, 0.5);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    position: relative;
+    z-index: 1;
+  }
+
+  .user-container h3 {
+    text-align: center;
+    color: #333;
+  }
+
+  .user-container ul {
+    list-style-type: none;
+    padding: 0;
+  }
+
+  .list {
+    padding: 15px;
+    border-radius: 5px;
+  }
+
+  .list b {
+    color: #555;
+  }
+
+  .task-info {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .task-info span {
+    color: #555;
+  }
+
+  .task-info .completed {
+    color: green;
+  }
+
+  .task-info .not-completed {
+    color: red;
+  }
+
+  .taskTabel {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 15px;
+  }
+
+  .taskTabel th,
+  td {
+    padding: 12px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+  }
+
+  .taskTabel th {
+    background-color: inherit;
+  }
+
+  .taskTabel td {
+    word-wrap: break-word;
+    max-width: 200px;
+  }
+
+  .taskTabel tr:hover {
+    background-color: lightblue;
+  }
+
+
+  .taskTabel td button {
+    position: absolute;
+
+  }
+
+  .taskTabel td button:hover {
+    color: red;
+  }
+
+}

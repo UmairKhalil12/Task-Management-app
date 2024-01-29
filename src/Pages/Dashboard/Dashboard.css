@@ -1,0 +1,65 @@
+.admin-home-background {
+    display: flex;
+    justify-content: space-around;
+    margin-top: -10%;
+    min-width: 100vw;
+  }
+  
+  .information-container {
+    display: flex;
+    gap: 20px;
+  }
+  
+  .count-card {
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 150px;
+    width: 250px;
+  }
+  
+  .count-card h2 {
+    font-size: 18px;
+    margin: 10px 0;
+  }
+  
+  .count-card h3 {
+    font-size: 24px;
+    font-weight: bold;
+    margin: 0;
+    color: #4caf50;
+  }
+  
+  .count-card-icon {
+    font-size: 40px;
+    color: #4caf50;
+  }
+  
+  .count-card-2{
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 45px;
+    width: 200px;
+  }
+
+  .count-card-2 h3 {
+    font-size: 18x;
+    font-weight: bold;
+    margin: 0;
+  }
+
+  .count-card-2 h4 {
+    font-size: 16px;
+    margin: 10px 0;
+    color: #4caf50;
+  }
+
