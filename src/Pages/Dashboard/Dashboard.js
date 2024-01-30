@@ -5,8 +5,12 @@ import SideNav from '../../Components/Navbar/SideNav';
 import AssignmentIcon from '@mui/icons-material/Assignment';
 import AssignmentTurnedInIcon from '@mui/icons-material/AssignmentTurnedIn';
 import AssignmentLateIcon from '@mui/icons-material/AssignmentLate';
+import { useAppStore } from '../../appStore';
 
 function Dashboard({ user, admin }) {
+
+    const drawerOpen = useAppStore(state => state.drawerOpen);
+
     const [users, setUsers] = useState([]);
 
     console.log(admin, 'admin adminhomepage');
@@ -92,38 +96,38 @@ function Dashboard({ user, admin }) {
 
     return (
         <>
-            <div className='admin-home-background'>
+            <div className={drawerOpen ? 'admin-home-background-open' : 'admin-home-background'}>
                 <SideNav admin={admin} Users={Users} />
                 <div>
                     <h1>Dashboard</h1>
                     <div className='information-container'>
-                        <div className='count-card'>
+                        <div className={drawerOpen ? 'count-card-open' : 'count-card'}>
                             <AssignmentIcon className='count-card-icon' />
                             <h2>Total Task(s)</h2>
                             <h3>{inProgressCount + completeCount + notCompletedCount}</h3>
                         </div>
 
-                        <div className='count-card'>
+                        <div className={drawerOpen ? 'count-card-open' : 'count-card'}>
                             <AssignmentLateIcon className='count-card-icon' />
                             <h2>In-Progress Task(s)</h2>
                             <h3>{inProgressCount}</h3>
                         </div>
 
-                        <div className='count-card'>
+                        <div className={drawerOpen ? 'count-card-open' : 'count-card'}>
                             <AssignmentTurnedInIcon className='count-card-icon' />
                             <h2>Completed Task(s)</h2>
                             <h3>{completeCount}</h3>
                         </div>
 
                         <div>
-                            <div className='count-card-2'>
+                            <div className={drawerOpen ? 'count-card-2-open' : 'count-card-2'}>
                                 <h3>Your task(s) to do</h3>
                                 <h4><b>{inProgressCountSpecific + notCompletedCountSpecific}</b></h4>
                             </div>
 
                             <br />
 
-                            <div className='count-card-2'>
+                            <div className={drawerOpen ? 'count-card-2-open' : 'count-card-2'}>
                                 <h3>Not Completed Task</h3>
                                 <h4><b>{notCompletedCountSpecific}</b></h4>
                             </div>

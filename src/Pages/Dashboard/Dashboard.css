@@ -63,3 +63,66 @@
     color: #4caf50;
   }
 
+
+/* open */ 
+
+.admin-home-background-open{
+  display: flex;
+  justify-content: space-around;
+  margin-top: -10%;
+  margin-left: 170px;
+}
+
+.count-card-open{
+  background-color: #fff;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 150px;
+  width: 210px;
+}
+
+.count-card-open h2 {
+  font-size: 20px;
+  margin: 8px 0;
+}
+
+.count-card-open h3 {
+  font-size: 18px;
+  font-weight: bold;
+  margin: 0;
+  color: #4caf50;
+}
+
+.count-card-icon {
+  font-size: 35px;
+  color: #4caf50;
+}
+
+
+.count-card-2-open{
+  background-color: #fff;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 45px;
+  width: 170px;
+}
+
+.count-card-2-open h3 {
+  font-size: 6x;
+  font-weight: bold;
+  margin: 0;
+}
+
+.count-card-2-open h4 {
+  font-size: 13px;
+  margin: 8px 0;
+  color: #4caf50;
+}

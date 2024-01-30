@@ -1,4 +1,3 @@
-import React, { useState } from 'react';
 import List from '@mui/material/List';
 import ListItem from '@mui/material/ListItem';
 import MenuIcon from '@mui/icons-material/Menu';
@@ -10,6 +9,7 @@ import ExitToAppIcon from '@mui/icons-material/ExitToApp';
 import { useNavigate } from 'react-router-dom';
 import { auth } from '../../FireBase/FireBase';
 import './SideNav.css';
+import { useAppStore } from '../../appStore';
 
 const Sidebar = ({ open, onClose, admin, Users }) => {
   const navigate = useNavigate();
@@ -65,12 +65,12 @@ const Sidebar = ({ open, onClose, admin, Users }) => {
 };
 
 const SideNav = ({ admin }) => {
-  const [drawerOpen, setDrawerOpen] = useState(true);
-  const navigate = useNavigate();
-
+  const drawerOpen = useAppStore(state => state.drawerOpen);
+  const onDrawerClose = useAppStore(state => state.onDrawerClose)
+ 
   return (
     <div>
-      <Sidebar open={drawerOpen} onClose={() => setDrawerOpen(!drawerOpen)} admin={admin} />
+      <Sidebar open={drawerOpen} onClose={onDrawerClose} admin={admin} />
 
     </div>
   );

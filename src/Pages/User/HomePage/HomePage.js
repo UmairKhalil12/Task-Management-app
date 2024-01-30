@@ -50,7 +50,7 @@ function HomePage({ currentUser }) {
   const User = users.filter(element => currentUser.uid === element.id);
 
   const Users = users.filter((element)=>element.email !== 'umairkhalil024@gmail.com');
-  console.log('homepage other than admin ',Users); 
+  // console.log('homepage other than admin ',Users); 
 
   const userTasksAssigned = User.map((user) => user.tasksAssigned || User[0]?.tasksAssigned || [])
   
@@ -100,7 +100,7 @@ function HomePage({ currentUser }) {
           <div>
             <h1>Task(s) Assigned</h1>
             <div className="list-container">
-              <table>
+              <table className="home-table">
                 <thead>
                   <tr>
                     <th>Task</th>

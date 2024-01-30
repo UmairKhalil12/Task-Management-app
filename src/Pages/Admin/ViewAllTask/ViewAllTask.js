@@ -9,6 +9,7 @@ import EditIcon from '@mui/icons-material/Edit';
 import Modal from '@mui/material/Modal';
 import Box from '@mui/material/Box';
 import EditTask from "../../../Components/EditTask/EditTask";
+import { useAppStore } from "../../../appStore";
 
 
 function ViewAllTask({ admin, user }) {
@@ -26,13 +27,12 @@ function ViewAllTask({ admin, user }) {
   };
 
   const [users, setUsers] = useState([]);
-
   const [open, setOpen] = useState(false);
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
-
   const [taskIndex, setTaskIndex] = useState('');
   const [userId, setUserId] = useState('');
+
   useEffect(() => {
     const fetchData = async () => {
       const userData = await getUsers();
@@ -43,9 +43,7 @@ function ViewAllTask({ admin, user }) {
   },);
 
   const User = users.filter((element) => user.uid === element.id);
-  const notAdminUser = users.filter((element) => user.email === element.email);
-  // console.log('notadminuser' , notAdminUser); 
-  // console.log(users); 
+  const notAdminUser = users.filter((element) => user.email === element.email); 
   const name = User.map((user) => { return user.name });
 
   const filterUserTasks = (id) => {
@@ -133,7 +131,10 @@ function ViewAllTask({ admin, user }) {
     setOpen(true);
   };
 
-  var adminEmail = "umairkhalil024@gmail.com";
+  //var adminEmail = "umairkhalil024@gmail.com";
+
+  const drawerOpen = useAppStore(state => state.drawerOpen);
+  // console.log('sidenav view task admin',drawerOpen)
 
   return (
     <>
@@ -150,12 +151,12 @@ function ViewAllTask({ admin, user }) {
         </Box>
       </Modal>
 
-      <div className="admin-background">
+      <div className={drawerOpen ? 'admin-background-open' : 'admin-background'}>
         <div className='task-container'>
           <div className='user-container'>
             <br />
             <h3>Assigned Tasks & Users</h3>
-            <table className="taskTabel">
+            <table className={drawerOpen ? 'taskTabelOpen' : 'taskTabel'}>
               <thead>
                 <tr>
                   <th>Name</th>
@@ -221,12 +222,12 @@ function ViewAllTask({ admin, user }) {
                           ))}
                         </td>
                         <td>
-                          {filterUserStatusOfTask(user.id).map((status, index) => (
+                          {filterUserStatusOfTask(user.id).map((status,index) => (
                             <div key={index} style={{ margin: '5px', alignItems: 'center' }}>
                               <button onClick={() => handleTaskDelete(user.id, index)} style={{ background: 'none', border: 'none' }}><DeleteIcon /></button>
-                              &nbsp; &nbsp;  &nbsp; &nbsp; &nbsp;
+                              {drawerOpen ? <></> : <>&nbsp; &nbsp; &nbsp; &nbsp;</>}
                               <button onClick={() => handleModal(index, user.id)} style={{ background: 'none', border: 'none' }}  ><EditIcon /> </button>  &nbsp; &nbsp;  &nbsp; &nbsp;
-                              <br /> <br />
+                              {drawerOpen ? <></> : <><br/> <br/></>}
                             </div>
                           ))}
 
