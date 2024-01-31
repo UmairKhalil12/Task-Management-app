@@ -8,7 +8,7 @@ import UpgradeIcon from '@mui/icons-material/Upgrade';
 import UpdateTask from "../../../Components/UpdateTask/UpdateTask";
 import PreviewIcon from '@mui/icons-material/Preview';
 import ViewTask from "../../../Components/ViewTask/ViewTask";
-
+import { useAppStore } from "../../../appStore";
 
 const style = {
   position: 'absolute',
@@ -22,8 +22,8 @@ const style = {
   width : 'auto'
 };
 
-function HomePage({ currentUser }) {
-  // console.log("homepage currentUser" , currentUser);
+function HomePage({ user }) {
+  console.log("HomePage currentUser" , user);
   const [users, setUsers] = useState([]);
   const [Updateindex, setUpdateindex] = useState('');
   const [ViewIndex , setViewIndex] = useState(''); 
@@ -47,9 +47,9 @@ function HomePage({ currentUser }) {
     fetchData();
   }, []);
 
-  const User = users.filter(element => currentUser.uid === element.id);
+  const User = users.filter(element => user.uid === element.id);
 
-  const Users = users.filter((element)=>element.email !== 'umairkhalil024@gmail.com');
+  //const Users = users.filter((element)=>element.email !== 'umairkhalil024@gmail.com');
   // console.log('homepage other than admin ',Users); 
 
   const userTasksAssigned = User.map((user) => user.tasksAssigned || User[0]?.tasksAssigned || [])
@@ -66,9 +66,11 @@ function HomePage({ currentUser }) {
     setViewIndex(index);
   }
 
+  const drawerOpen = useAppStore(state => state.drawerOpen);
+
   return (
     <>
-      <SideNav  Users = {Users}/>
+      <SideNav  user={user}/>
 
       <Modal
         open={open}
@@ -77,7 +79,7 @@ function HomePage({ currentUser }) {
         aria-describedby="modal-modal-description"
       >
         <Box sx={style}>
-          <UpdateTask user={currentUser} index={Updateindex} onClose={handleClose} />
+          <UpdateTask user={user} index={Updateindex} onClose={handleClose} />
         </Box>
       </Modal>
 
@@ -88,19 +90,19 @@ function HomePage({ currentUser }) {
         aria-describedby="modal-modal-description"
       >
         <Box sx={style}>
-        <ViewTask users = {users} currentUser = {currentUser} taskIndex = {ViewIndex} />
+        <ViewTask users = {users} currentUser = {user} taskIndex = {ViewIndex} />
         </Box>
       </Modal>
 
-      <div className="Page-css">
+      <div className={drawerOpen ? 'Page-css-open' : 'Page-css'}>
 
        {/* <h1>Home Page</h1> */ }
         <h2>Welcome, {name}</h2>
-        <div className="task-list">
+        <div className={drawerOpen ? 'task-list-open' : 'task-list'}>
           <div>
             <h1>Task(s) Assigned</h1>
             <div className="list-container">
-              <table className="home-table">
+              <table className={drawerOpen ? 'home-table-open' : 'home-table'}>
                 <thead>
                   <tr>
                     <th>Task</th>

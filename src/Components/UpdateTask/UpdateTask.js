@@ -53,7 +53,7 @@ function UpdateTask({ user, index, onClose }) {
 
     const AssignTaskClick = async (event) => {
         event.preventDefault();
-        console.log(user.uid);
+        // console.log(user.uid);
 
         const userDocRef = doc(db, 'users', user.uid);
 
@@ -196,7 +196,7 @@ function UpdateTask({ user, index, onClose }) {
                         onChange={handleStatusChange}
                         fullWidth
                     >
-                        <MenuItem value="In-Progress">In-Progress</MenuItem>
+                        <MenuItem value="In-progress">In-Progress</MenuItem>
                         <MenuItem value="Not Completed">Not Completed</MenuItem>
                         <MenuItem value="Completed">Completed</MenuItem>
                     </Select>

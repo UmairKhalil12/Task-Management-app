@@ -35,16 +35,16 @@ function Navigation() {
               <Route path="/viewtask" element={<ViewAllTask admin={isAdmin} user={isUser} />} />
               <Route path="/" element={<ViewAllTask admin={isAdmin} user={isUser} />} />
               <Route path='/home' element={<Dashboard user={isUser} admin={isAdmin} />} />
-              <Route path='/assigntask' element={<GiveTask admin={isAdmin} />} />
+              <Route path='/assigntask' element={<GiveTask admin={isAdmin} user = {isUser} />} />
               <Route path='*' element={<ViewAllTask admin={isAdmin} user={isUser} />} />
 
             </>
           )}
           {currentUser && (
             <>
-              <Route path="/viewtask" element={<HomePage currentUser={isUser} />} />
-              <Route path="/" element={<HomePage currentUser={isUser} />} />
-              <Route path="*" element={<HomePage currentUser={isUser} />} />
+              <Route path="/viewtask" element={<HomePage user={isUser} />} />
+              <Route path="/" element={<HomePage user={isUser} />} />
+              <Route path="*" element={<HomePage user={isUser} />} />
               <Route path ="/home" element={<Dashboard user={isUser} admin={isAdmin} />}   />
             </>
           )}

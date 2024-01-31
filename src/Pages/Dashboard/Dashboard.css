@@ -18,7 +18,7 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    height: 150px;
+    height: 120px;
     width: 250px;
   }
   
@@ -47,19 +47,19 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    height: 45px;
+    height: 31px;
     width: 200px;
   }
 
   .count-card-2 h3 {
-    font-size: 18x;
+    font-size: 16px;
     font-weight: bold;
     margin: 0;
   }
 
   .count-card-2 h4 {
     font-size: 16px;
-    margin: 10px 0;
+    margin: 8px 0;
     color: #4caf50;
   }
 
@@ -70,7 +70,7 @@
   display: flex;
   justify-content: space-around;
   margin-top: -10%;
-  margin-left: 170px;
+  margin-left: 250px;
 }
 
 .count-card-open{
@@ -81,8 +81,8 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  height: 150px;
-  width: 210px;
+  height: 120px;
+  width: 200px;
 }
 
 .count-card-open h2 {
@@ -111,18 +111,18 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  height: 45px;
+  height: 31px;
   width: 170px;
 }
 
 .count-card-2-open h3 {
-  font-size: 6x;
+  font-size: 17px;
   font-weight: bold;
   margin: 0;
 }
 
 .count-card-2-open h4 {
-  font-size: 13px;
+  font-size: 15px;
   margin: 8px 0;
   color: #4caf50;
 }

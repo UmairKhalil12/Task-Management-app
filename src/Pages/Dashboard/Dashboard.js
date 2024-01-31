@@ -13,8 +13,8 @@ function Dashboard({ user, admin }) {
 
     const [users, setUsers] = useState([]);
 
-    console.log(admin, 'admin adminhomepage');
-    console.log(user, 'admin adminhomepage');
+    // console.log(admin, 'admin adminhomepage');
+    // console.log(user, 'admin adminhomepage');
 
     useEffect(() => {
         const fetchData = async () => {
@@ -29,7 +29,7 @@ function Dashboard({ user, admin }) {
     const name = User.map((user) => { return user.name });
 
     const Users = users.filter((element) => element.email !== 'umairkhalil024@gmail.com');
-    console.log('homepage other than admin ', Users);
+    // console.log('homepage other than admin ', Users);
 
     let completeCount = 0;
     let inProgressCount = 0;
@@ -84,20 +84,20 @@ function Dashboard({ user, admin }) {
     users.map((user) => {
         filterUserStatusOfTask(user.id)
     })
-    console.log('in-progress', inProgressCount);
-    console.log('completed task', completeCount);
-    console.log('Notcompleted task', notCompletedCount);
+    // console.log('in-progress', inProgressCount);
+    // console.log('completed task', completeCount);
+    // console.log('Notcompleted task', notCompletedCount);
 
     filterUserStatusOfTask2(user.uid);
 
-    console.log('in-progress count specific', inProgressCountSpecific);
-    console.log('completed task count Specific', completeCountSpecific);
-    console.log('NotcompletedCountSpecific task', notCompletedCountSpecific);
+    // console.log('in-progress count specific', inProgressCountSpecific);
+    // console.log('completed task count Specific', completeCountSpecific);
+    // console.log('NotcompletedCountSpecific task', notCompletedCountSpecific);
 
     return (
         <>
             <div className={drawerOpen ? 'admin-home-background-open' : 'admin-home-background'}>
-                <SideNav admin={admin} Users={Users} />
+                <SideNav admin={admin} user={user} />
                 <div>
                     <h1>Dashboard</h1>
                     <div className='information-container'>

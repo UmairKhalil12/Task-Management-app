@@ -13,7 +13,7 @@ import SideNav from '../../../Components/Navbar/SideNav';
 import TextareaAutosize from '@mui/material/TextareaAutosize';
 import "./GiveTask.css"
 
-function GiveTask({ admin }) {
+function GiveTask({ admin , user }) {
     const [users, setUsers] = useState([]);
 
     useEffect(() => {
@@ -88,7 +88,7 @@ function GiveTask({ admin }) {
 
     return (
         <>
-            <SideNav admin={admin} />
+            <SideNav admin={admin} user={user}/>
             <div className='give-task-container'>
                 <div className='give-task-container-2'>
                     <h3>Assigning Task</h3>

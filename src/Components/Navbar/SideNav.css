@@ -12,10 +12,11 @@
   overflow: hidden;
   transition: width 0.3s;
   z-index: 1000;
+  
 }
 
 .sidebar.open {
-  width: 200px;
+  min-width: 250px;
 }
 
 .top-menu {
@@ -25,7 +26,8 @@
   height: 60px;
   padding: 0 10px;
   background-color: #245a94;
-  border-bottom: 1px solid #555;
+  border: 0;
+  border-bottom: 1px solid white;
 }
 
 .menu-icon-container {
@@ -57,7 +59,7 @@
   width: 100%;
   margin: 10px auto;
   border: 0;
-  border-top: 1px solid #555;
+  border-top: 1px solid white;
 }
 
 .overlay {

@@ -138,7 +138,7 @@ function ViewAllTask({ admin, user }) {
 
   return (
     <>
-      <SideNav admin={admin} />
+      <SideNav admin={admin} user = {user} />
 
       <Modal
         open={open}
@@ -225,7 +225,7 @@ function ViewAllTask({ admin, user }) {
                           {filterUserStatusOfTask(user.id).map((status,index) => (
                             <div key={index} style={{ margin: '5px', alignItems: 'center' }}>
                               <button onClick={() => handleTaskDelete(user.id, index)} style={{ background: 'none', border: 'none' }}><DeleteIcon /></button>
-                              {drawerOpen ? <></> : <>&nbsp; &nbsp; &nbsp; &nbsp;</>}
+                              {drawerOpen ? <></> : <>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; </>}
                               <button onClick={() => handleModal(index, user.id)} style={{ background: 'none', border: 'none' }}  ><EditIcon /> </button>  &nbsp; &nbsp;  &nbsp; &nbsp;
                               {drawerOpen ? <></> : <><br/> <br/></>}
                             </div>

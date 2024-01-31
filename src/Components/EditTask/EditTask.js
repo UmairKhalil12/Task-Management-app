@@ -34,8 +34,8 @@ export default function EditTask({ users, closeEvent, index, id }) {
     }
 
     const EditTaskClick = async () => {
-        console.log('select', id);
-        console.log('index', index);
+        // console.log('select', id);
+        // console.log('index', index);
 
         try {
             const userRef = doc(db, 'users', id);

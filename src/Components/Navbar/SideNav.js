@@ -11,7 +11,8 @@ import { auth } from '../../FireBase/FireBase';
 import './SideNav.css';
 import { useAppStore } from '../../appStore';
 
-const Sidebar = ({ open, onClose, admin, Users }) => {
+
+const Sidebar = ({ open, onClose, admin, user }) => {
   const navigate = useNavigate();
 
   const handleSignOut = () => {
@@ -24,14 +25,22 @@ const Sidebar = ({ open, onClose, admin, Users }) => {
     }
   };
 
+  console.log('Sidenav', user);
+
   return (
     <div className={`sidebar ${open ? 'open' : ''}`}>
-      <div className="top-menu">
+
+      <div className='top-menu'>
         <div className="menu-icon-container" onClick={onClose}>
           {open ? <ArrowBackIcon /> : <MenuIcon />}
         </div>
       </div>
+
       <List>
+
+        <ListItem button >
+          {open ? user.email : null}
+        </ListItem>
 
         <ListItem button onClick={() => navigate('/home')}>
           {open ? <HomeIcon /> : <HomeIcon />} &nbsp; &nbsp;
@@ -64,13 +73,13 @@ const Sidebar = ({ open, onClose, admin, Users }) => {
   );
 };
 
-const SideNav = ({ admin }) => {
+const SideNav = ({ admin, user }) => {
   const drawerOpen = useAppStore(state => state.drawerOpen);
   const onDrawerClose = useAppStore(state => state.onDrawerClose)
- 
+
   return (
     <div>
-      <Sidebar open={drawerOpen} onClose={onDrawerClose} admin={admin} />
+      <Sidebar open={drawerOpen} onClose={onDrawerClose} admin={admin} user={user} />
 
     </div>
   );
