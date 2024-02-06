@@ -19,14 +19,14 @@ const style = {
   border: '2px solid #000',
   boxShadow: 24,
   p: 4,
-  width : 'auto'
+  width: 'auto'
 };
 
-function HomePage({ user }) {
-  console.log("HomePage currentUser" , user);
+function HomePage({ user, admin }) {
+  console.log("HomePage currentUser", user);
   const [users, setUsers] = useState([]);
   const [Updateindex, setUpdateindex] = useState('');
-  const [ViewIndex , setViewIndex] = useState(''); 
+  const [ViewIndex, setViewIndex] = useState('');
 
 
   const [open, setOpen] = useState(false);
@@ -45,15 +45,12 @@ function HomePage({ user }) {
     };
 
     fetchData();
-  }, []);
+  }, [users]);
 
   const User = users.filter(element => user.uid === element.id);
 
-  //const Users = users.filter((element)=>element.email !== 'umairkhalil024@gmail.com');
-  // console.log('homepage other than admin ',Users); 
-
   const userTasksAssigned = User.map((user) => user.tasksAssigned || User[0]?.tasksAssigned || [])
-  
+
   const name = User.map((user) => user.name);
 
   const handleUpdateButton = (index) => {
@@ -70,7 +67,7 @@ function HomePage({ user }) {
 
   return (
     <>
-      <SideNav  user={user}/>
+      <SideNav user={user} admin={admin} />
 
       <Modal
         open={open}
@@ -90,13 +87,12 @@ function HomePage({ user }) {
         aria-describedby="modal-modal-description"
       >
         <Box sx={style}>
-        <ViewTask users = {users} currentUser = {user} taskIndex = {ViewIndex} />
+          <ViewTask users={users} currentUser={user} taskIndex={ViewIndex} />
         </Box>
       </Modal>
 
       <div className={drawerOpen ? 'Page-css-open' : 'Page-css'}>
 
-       {/* <h1>Home Page</h1> */ }
         <h2>Welcome, {name}</h2>
         <div className={drawerOpen ? 'task-list-open' : 'task-list'}>
           <div>
@@ -159,8 +155,6 @@ function HomePage({ user }) {
           </div>
         </div>
       </div>
-
-
     </>
   );
 }

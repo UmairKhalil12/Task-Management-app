@@ -69,7 +69,7 @@ function Dashboard({ user, admin }) {
             elements.map((task) => {
                 if (task.statusOfTask === 'Completed') {
                     completeCountSpecific += 1
-                } else if (task.statusOfTask === 'In-progress') {
+                } else if (task.statusOfTask === 'In-progress' || task.statusOfTask === 'In-Progress') {
                     inProgressCountSpecific += 1
                 } else if (task.statusOfTask === 'Not Completed') {
                     notCompletedCountSpecific += 1
@@ -84,9 +84,9 @@ function Dashboard({ user, admin }) {
     users.map((user) => {
         filterUserStatusOfTask(user.id)
     })
-    // console.log('in-progress', inProgressCount);
-    // console.log('completed task', completeCount);
-    // console.log('Notcompleted task', notCompletedCount);
+    console.log('in-progress', inProgressCount);
+    console.log('completed task', completeCount);
+    console.log('Notcompleted task', notCompletedCount);
 
     filterUserStatusOfTask2(user.uid);
 

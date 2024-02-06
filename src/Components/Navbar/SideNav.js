@@ -6,6 +6,7 @@ import HomeIcon from '@mui/icons-material/Home';
 import AddTaskIcon from '@mui/icons-material/AddTask';
 import ListIcon from '@mui/icons-material/List';
 import ExitToAppIcon from '@mui/icons-material/ExitToApp';
+import ViewHeadlineIcon from '@mui/icons-material/ViewHeadline';
 import { useNavigate } from 'react-router-dom';
 import { auth } from '../../FireBase/FireBase';
 import './SideNav.css';
@@ -47,10 +48,8 @@ const Sidebar = ({ open, onClose, admin, user }) => {
           {open && <span className="text">Home</span>}
         </ListItem>
 
-
-
         <ListItem button onClick={() => navigate('/viewtask')}>
-          {open ? <ListIcon /> : <ListIcon />} &nbsp; &nbsp;
+          {open ? <ViewHeadlineIcon /> : <ViewHeadlineIcon />} &nbsp; &nbsp;
           {open && <span className="text">View Task</span>}
         </ListItem>
 
@@ -59,6 +58,13 @@ const Sidebar = ({ open, onClose, admin, user }) => {
           <ListItem button onClick={() => navigate('/assigntask')}>
             {open ? <AddTaskIcon /> : <AddTaskIcon />} &nbsp; &nbsp;
             {open && <span className="text">Assign Task</span>}
+          </ListItem>
+        )}
+
+        {admin && (
+          <ListItem button onClick={() => navigate('/viewtaskadmin')}>
+            {open ? <ListIcon /> : <ListIcon />} &nbsp; &nbsp;
+            {open && <span className="text">View my task</span>}
           </ListItem>
         )}
 

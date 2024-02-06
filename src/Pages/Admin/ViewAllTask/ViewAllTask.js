@@ -171,7 +171,7 @@ function ViewAllTask({ admin, user }) {
               <tbody>
                 {users.map((user) => (
                   <tr key={user.id} className='list'>
-                    {filterUserTasks(user.id).length > 0 && (
+                    {filterUserTasks(user.id).length > 0 ? (
                       <>
                         <td>
                           {
@@ -233,7 +233,7 @@ function ViewAllTask({ admin, user }) {
 
                         </td>
                       </>
-                    )}
+                    ) : 'No task assigned yet'}
                   </tr>
                 ))}
               </tbody>

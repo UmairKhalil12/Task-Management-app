@@ -37,6 +37,7 @@ function Navigation() {
               <Route path='/home' element={<Dashboard user={isUser} admin={isAdmin} />} />
               <Route path='/assigntask' element={<GiveTask admin={isAdmin} user = {isUser} />} />
               <Route path='*' element={<ViewAllTask admin={isAdmin} user={isUser} />} />
+              <Route path="/viewtaskadmin" element={<HomePage user={isUser} admin={isAdmin} /> } />
 
             </>
           )}
