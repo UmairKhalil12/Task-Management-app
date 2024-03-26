@@ -25,10 +25,10 @@ function Dashboard({ user, admin }) {
         fetchData();
     }, []);
 
-    const User = users.filter((element) => user.uid === element.id);
-    const name = User.map((user) => { return user.name });
+    // const User = users.filter((element) => user.uid === element.id);
+    // const name = User.map((user) => { return user.name });
 
-    const Users = users.filter((element) => element.email !== 'umairkhalil024@gmail.com');
+    // const Users = users.filter((element) => element.email !== 'umairkhalil024@gmail.com');
     // console.log('homepage other than admin ', Users);
 
     let completeCount = 0;
@@ -40,8 +40,8 @@ function Dashboard({ user, admin }) {
         const tasksAssigned = userFound.map((user) => {
             return user.tasksAssigned || []
         })
-        tasksAssigned.map((elements) => {
-            elements.map((task) => {
+        tasksAssigned.forEach((elements) => {
+            elements.forEach((task) => {
                 if (task.statusOfTask === 'Completed') {
                     completeCount += 1
                 } else if (task.statusOfTask === 'In-progress') {
@@ -65,8 +65,8 @@ function Dashboard({ user, admin }) {
         const tasksAssigned = userFound.map((user) => {
             return user.tasksAssigned || []
         })
-        tasksAssigned.map((elements) => {
-            elements.map((task) => {
+        tasksAssigned.forEach((elements) => {
+            elements.forEach((task) => {
                 if (task.statusOfTask === 'Completed') {
                     completeCountSpecific += 1
                 } else if (task.statusOfTask === 'In-progress' || task.statusOfTask === 'In-Progress') {
@@ -81,12 +81,12 @@ function Dashboard({ user, admin }) {
         })
     };
 
-    users.map((user) => {
+    users.forEach((user) => {
         filterUserStatusOfTask(user.id)
     })
-    console.log('in-progress', inProgressCount);
-    console.log('completed task', completeCount);
-    console.log('Notcompleted task', notCompletedCount);
+    // console.log('in-progress', inProgressCount);
+    // console.log('completed task', completeCount);
+    // console.log('Notcompleted task', notCompletedCount);
 
     filterUserStatusOfTask2(user.uid);
 

@@ -28,7 +28,7 @@ function ViewAllTask({ admin, user }) {
 
   const [users, setUsers] = useState([]);
   const [open, setOpen] = useState(false);
-  const handleOpen = () => setOpen(true);
+  // const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
   const [taskIndex, setTaskIndex] = useState('');
   const [userId, setUserId] = useState('');
@@ -42,9 +42,9 @@ function ViewAllTask({ admin, user }) {
     fetchData();
   },);
 
-  const User = users.filter((element) => user.uid === element.id);
-  const notAdminUser = users.filter((element) => user.email === element.email); 
-  const name = User.map((user) => { return user.name });
+  // const User = users.filter((element) => user.uid === element.id);
+  // const notAdminUser = users.filter((element) => user.email === element.email); 
+  // const name = User.map((user) => { return user.name });
 
   const filterUserTasks = (id) => {
     let AllTaskArray = [];
@@ -54,8 +54,8 @@ function ViewAllTask({ admin, user }) {
       return user.tasksAssigned || []
     })
 
-    tasksAssigned.map((elements) => {
-      elements.map((task) => {
+    tasksAssigned.forEach((elements) => {
+      elements.forEach((task) => {
         AllTaskArray.push(task.task)
       })
     })
@@ -68,8 +68,8 @@ function ViewAllTask({ admin, user }) {
     const tasksAssigned = userFound.map((user) => {
       return user.tasksAssigned || []
     })
-    tasksAssigned.map((elements) => {
-      elements.map((task) => {
+    tasksAssigned.forEach((elements) => {
+      elements.forEach((task) => {
         AllStatusArray.push(task.statusOfTask)
       })
     })
@@ -82,8 +82,8 @@ function ViewAllTask({ admin, user }) {
     const tasksAssigned = userFound.map((user) => {
       return user.tasksAssigned || []
     })
-    tasksAssigned.map((elements) => {
-      elements.map((task) => {
+    tasksAssigned.forEach((elements) => {
+      elements.forEach((task) => {
         AllStartDate.push(task.taskStartDate)
       })
     })
@@ -97,8 +97,8 @@ function ViewAllTask({ admin, user }) {
     const tasksAssigned = userFound.map((user) => {
       return user.tasksAssigned || []
     })
-    tasksAssigned.map((elements) => {
-      elements.map((task) => {
+    tasksAssigned.forEach((elements) => {
+      elements.forEach((task) => {
         AllEndDate.push(task.taskEndDate)
       })
     })

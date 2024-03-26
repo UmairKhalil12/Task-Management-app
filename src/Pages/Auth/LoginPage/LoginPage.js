@@ -27,7 +27,7 @@ function LoginPage() {
         loginHandler();
     };
 
-    
+
     return (
         <div className='background-login'>
             <div className='loginContainer'>
@@ -84,8 +84,8 @@ function LoginPage() {
                         >
                             Login
                         </Button>
-                        <br/> 
-                        <p style={{color : 'blue' , float : 'left'}} onClick={()=>navigate('/forgetpassword')}>Forgot Password ? send pasword reset email</p>
+                        <br />
+                        <p style={{ color: 'blue', float: 'left' }} onClick={() => navigate('/forgetpassword')}>Forgot Password ? send pasword reset email</p>
                         <p>Dont have an account?</p> <p style={{ color: 'blue' }} onClick={() => { navigate('/signup') }}>Signup</p>
                     </form>
                 </div>

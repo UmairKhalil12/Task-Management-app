@@ -25,7 +25,7 @@ function GiveTask({ admin , user }) {
         fetchData();
     }, []);
 
-    const adminEmail = "umairkhalil024@gmail.com";
+    // const adminEmail = "umairkhalil024@gmail.com";
 
     const [select, setSelect] = useState('Choose user to assign task');
     const [task, setTask] = useState('');

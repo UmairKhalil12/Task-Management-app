@@ -62,10 +62,8 @@ function AdminHomePage({ user, admin }) {
 
     return (
         <div className='admin-home-background'>
-        <div>
             <SideNav admin={admin} />
-
-           
+            <div>
                 <h1>Welcome , {name}</h1>
                 <div className='information-container'>
 

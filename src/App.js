@@ -12,8 +12,7 @@ function App() {
     }, 3000)
   }, [])
   return (
-    <div className="App">
-      <div >
+    <div>
         {
           Loading ?
             <ClipLoader
@@ -25,7 +24,6 @@ function App() {
             /> : <Navigation />
         }
 
-      </div>
     </div>
   );
 }

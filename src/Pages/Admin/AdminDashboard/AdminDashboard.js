@@ -43,7 +43,7 @@ function AdminDashboard({ admin, user }) {
   },);
 
   const User = users.filter((element) => user.uid === element.id);
-  const notAdminUser = users.filter((element) => user.email === element.email);
+  // const notAdminUser = users.filter((element) => user.email === element.email);
   // console.log('notadminuser' , notAdminUser); 
   // console.log(users); 
   const name = User.map((user) => { return user.name });
@@ -138,13 +138,13 @@ function AdminDashboard({ admin, user }) {
               <tbody>
                 {users.map((user) => (
                   <tr key={user.id} className='list'>
-                    {user.email !== adminEmail && filterUserTasks(user.id).length > 0  &&(
+                    {user.email !== adminEmail && filterUserTasks(user.id).length > 0 && (
                       <>
                         <td>
                           {
                             (<div >
                               {user.name}
-                              <br/> <br/> 
+                              <br /> <br />
                             </div>)
                           }
                         </td>
@@ -152,7 +152,7 @@ function AdminDashboard({ admin, user }) {
                           {
                             (<div >
                               {user.email}
-                              <br/> <br/>
+                              <br /> <br />
                             </div>)
                           }
                         </td>

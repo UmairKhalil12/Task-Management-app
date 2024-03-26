@@ -3,10 +3,9 @@
   justify-content: center;
   align-items: center;
   color: black;
-  width: 100vw;
-  height: 100vh;
+  height: 100%;
+  width: 100%;
   margin: 0;
-
 }
 
 .loginContainer-2 {
@@ -16,7 +15,7 @@
 }
 
 .background-login {
-  background: linear-gradient(to bottom, #7896c6, #245a94); 
+  /* background: linear-gradient(to bottom, #7896c6, #245a94); */
   height: 100vh;
 }
 
@@ -27,69 +26,3 @@
 .formLabel {
   text-align: left;
 }
-
-@media (max-width: 768px){
-  .loginContainer {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    color: black;
-    width: 100vw;
-    height: 100vh;
-    margin: 0;
-  
-  }
-  
-  .loginContainer-2 {
-    background-color: rgba(255, 255, 255, 0.8);
-    padding: 20px;
-    border-radius: 10px;
-  }
-  
-  .background-login {
-    background: linear-gradient(to bottom, #7896c6, #245a94); 
-    height: 100vh;
-  }
-  
-  .custom-textfield {
-    width: 280px;
-  }
-  
-  .formLabel {
-    text-align: left;
-  }
-
-}
-
-@media (max-width: 480px){
-  .loginContainer {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    color: black;
-    width: 100vw;
-    height: 100vh;
-    margin: 0;
-  
-  }
-  
-  .loginContainer-2 {
-    background-color: rgba(255, 255, 255, 0.8);
-    padding: 20px;
-    border-radius: 10px;
-  }
-  
-  .background-login {
-    background: linear-gradient(to bottom, #7896c6, #245a94); 
-    height: 100vh;
-  }
-  
-  .custom-textfield {
-    width: 280px;
-  }
-  
-  .formLabel {
-    text-align: left;
-  }
-}
-

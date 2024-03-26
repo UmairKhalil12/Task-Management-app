@@ -1,79 +1,79 @@
 .admin-home-background {
-    display: flex;
-    justify-content: space-around;
-    margin-top: -10%;
-    min-width: 100vw;
-  }
-  
-  .information-container {
-    display: flex;
-    gap: 20px;
-  }
-  
-  .count-card {
-    background-color: #fff;
-    border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
-    padding: 20px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    height: 120px;
-    width: 250px;
-  }
-  
-  .count-card h2 {
-    font-size: 18px;
-    margin: 10px 0;
-  }
-  
-  .count-card h3 {
-    font-size: 24px;
-    font-weight: bold;
-    margin: 0;
-    color: #4caf50;
-  }
-  
-  .count-card-icon {
-    font-size: 40px;
-    color: #4caf50;
-  }
-  
-  .count-card-2{
-    background-color: #fff;
-    border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
-    padding: 20px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    height: 31px;
-    width: 200px;
-  }
+  display: flex;
+  justify-content: space-around;
+  /* margin-top: -10%; */
+  /* min-width: 100vw; */
+}
 
-  .count-card-2 h3 {
-    font-size: 16px;
-    font-weight: bold;
-    margin: 0;
-  }
+.information-container {
+  display: flex;
+  gap: 20px;
+}
 
-  .count-card-2 h4 {
-    font-size: 16px;
-    margin: 8px 0;
-    color: #4caf50;
-  }
+.count-card {
+  background-color: #fff;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 120px;
+  width: 250px;
+}
+
+.count-card h2 {
+  font-size: 18px;
+  margin: 10px 0;
+}
+
+.count-card h3 {
+  font-size: 24px;
+  font-weight: bold;
+  margin: 0;
+  color: #4caf50;
+}
+
+.count-card-icon {
+  font-size: 40px;
+  color: #4caf50;
+}
+
+.count-card-2 {
+  background-color: #fff;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 31px;
+  width: 200px;
+}
+
+.count-card-2 h3 {
+  font-size: 16px;
+  font-weight: bold;
+  margin: 0;
+}
+
+.count-card-2 h4 {
+  font-size: 16px;
+  margin: 8px 0;
+  color: #4caf50;
+}
 
 
-/* open */ 
+/* open */
 
-.admin-home-background-open{
+.admin-home-background-open {
   display: flex;
   justify-content: space-around;
   margin-top: -10%;
   margin-left: 250px;
 }
 
-.count-card-open{
+.count-card-open {
   background-color: #fff;
   border-radius: 10px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
@@ -103,7 +103,7 @@
 }
 
 
-.count-card-2-open{
+.count-card-2-open {
   background-color: #fff;
   border-radius: 10px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
@@ -125,4 +125,28 @@
   font-size: 15px;
   margin: 8px 0;
   color: #4caf50;
+}
+
+@media screen and (max-width : 768px) {
+  .information-container {
+    flex-direction: column;
+  }
+
+  .count-card-2 {
+    width: 250px;
+  }
+
+}
+
+@media screen and (max-width : 550px) {
+  .information-container{
+    margin-left: 1.5rem;
+  }
+  .count-card {
+    width: 125px;
+  }
+  .count-card-2 {
+    width: 125px;
+  }
+
 }

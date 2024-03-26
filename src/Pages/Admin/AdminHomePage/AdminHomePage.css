@@ -1,201 +1,78 @@
-.information-container{
+.admin-home-background{
     display: flex;
-    justify-content: flex-start;
+    justify-content: center;
+    align-items: center;
+    min-width: 100vb;
+}
+
+
+.information-container {
+    display: flex;
+    justify-content: center;
     align-items: center;
     margin-left: 60px;
+    min-height: 100vh;
 }
 
-.admin-home-background{
-    background: hsla(197, 94%, 51%, 1);
-    background-image: linear-gradient(90deg, hsla(197, 94%, 51%, 1) 0%, hsla(348, 84%, 55%, 1) 100%);
-    overflow: hidden;
-    height: 100vh;
-}
-
-.count-incomplete-task{
+.count-incomplete-task {
     width: 33%;
     float: left;
     margin: 1%;
     padding: 5px;
-    border-radius: 5px ;
-    background-color: rgb(200 , 55 ,55);
-    height: 100%;
+    border-radius: 5px;
+    background-color: rgb(200, 55, 55);
     box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.2);
-    transition: box-shadow 0.3s ease; 
+    transition: box-shadow 0.3s ease;
 }
 
-.count-incomplete-task:hover{
+.count-incomplete-task:hover {
     box-shadow: inset 0 0 20px rgba(0, 0, 0, 0.4);
 }
 
 
-.count-completed-task{
+.count-completed-task {
     width: 33%;
     float: right;
     margin: 1%;
     padding: 5px;
-    border-radius: 5px ;
-    background-color:rgb(55,200,55);
+    border-radius: 5px;
+    background-color: rgb(55, 200, 55);
     /* box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.2); */
-    transition: box-shadow 0.3s ease; 
+    transition: box-shadow 0.3s ease;
     height: 100%;
 }
 
-.count-completed-task:hover{
+.count-completed-task:hover {
     box-shadow: inset 0 0 20px rgba(0, 0, 0, 0.4);
 }
 
 
-.count-total-task{
+.count-total-task {
     width: 33%;
     float: right;
     margin: 1%;
     padding: 5px;
-    border-radius: 5px ;
+    border-radius: 5px;
     background-color: rgb(55, 55, 200);
     height: 100%;
     box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.2);
-    transition: box-shadow 0.3s ease; 
-    
+    transition: box-shadow 0.3s ease;
+
 }
 
-.count-total-task:hover{
+.count-total-task:hover {
     box-shadow: inset 0 0 20px rgba(0, 0, 0, 0.4);
 }
 
-@media (max-width: 768px){
-    .information-container{
-        display: flex;
-        justify-content: flex-start;
-        align-items: center;
-        margin-left: 60px;
+@media screen and (max-width : 750px) {
+    .information-container {
+        flex-direction: column;
     }
-    
-    .admin-home-background{
-        background: hsla(197, 94%, 51%, 1);
-        background-image: linear-gradient(90deg, hsla(197, 94%, 51%, 1) 0%, hsla(348, 84%, 55%, 1) 100%);
-        overflow: hidden;
-        height: 100vh;
-    }
-    
-    .count-incomplete-task{
-        width: 33%;
-        float: left;
-        margin: 1%;
-        padding: 5px;
-        border-radius: 5px ;
-        background-color: rgb(200 , 55 ,55);
-        height: 100%;
-        box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.2);
-        transition: box-shadow 0.3s ease; 
-    }
-    
-    .count-incomplete-task:hover{
-        box-shadow: inset 0 0 20px rgba(0, 0, 0, 0.4);
-    }
-    
-    
-    .count-completed-task{
-        width: 33%;
-        float: right;
-        margin: 1%;
-        padding: 5px;
-        border-radius: 5px ;
-        background-color:rgb(55,200,55);
-        /* box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.2); */
-        transition: box-shadow 0.3s ease; 
-        height: 100%;
-    }
-    
-    .count-completed-task:hover{
-        box-shadow: inset 0 0 20px rgba(0, 0, 0, 0.4);
-    }
-    
-    
-    .count-total-task{
-        width: 33%;
-        float: right;
-        margin: 1%;
-        padding: 5px;
-        border-radius: 5px ;
-        background-color: rgb(55, 55, 200);
-        height: 100%;
-        box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.2);
-        transition: box-shadow 0.3s ease; 
-        
-    }
-    
-    .count-total-task:hover{
-        box-shadow: inset 0 0 20px rgba(0, 0, 0, 0.4);
-    }
-
 }
 
-@media (max-width: 480px){
-    .information-container{
-        display: flex;
-        justify-content: flex-start;
-        align-items: center;
-        margin-left: 60px;
+@media screen and (max-width : 550px) {
+    .information-container {
+        flex-direction: column;
     }
     
-    .admin-home-background{
-        background: hsla(197, 94%, 51%, 1);
-        background-image: linear-gradient(90deg, hsla(197, 94%, 51%, 1) 0%, hsla(348, 84%, 55%, 1) 100%);
-        overflow: hidden;
-        height: 100vh;
-    }
-    
-    .count-incomplete-task{
-        width: 33%;
-        float: left;
-        margin: 1%;
-        padding: 5px;
-        border-radius: 5px ;
-        background-color: rgb(200 , 55 ,55);
-        height: 100%;
-        box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.2);
-        transition: box-shadow 0.3s ease; 
-    }
-    
-    .count-incomplete-task:hover{
-        box-shadow: inset 0 0 20px rgba(0, 0, 0, 0.4);
-    }
-    
-    
-    .count-completed-task{
-        width: 33%;
-        float: right;
-        margin: 1%;
-        padding: 5px;
-        border-radius: 5px ;
-        background-color:rgb(55,200,55);
-        /* box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.2); */
-        transition: box-shadow 0.3s ease; 
-        height: 100%;
-    }
-    
-    .count-completed-task:hover{
-        box-shadow: inset 0 0 20px rgba(0, 0, 0, 0.4);
-    }
-    
-    
-    .count-total-task{
-        width: 33%;
-        float: right;
-        margin: 1%;
-        padding: 5px;
-        border-radius: 5px ;
-        background-color: rgb(55, 55, 200);
-        height: 100%;
-        box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.2);
-        transition: box-shadow 0.3s ease; 
-        
-    }
-    
-    .count-total-task:hover{
-        box-shadow: inset 0 0 20px rgba(0, 0, 0, 0.4);
-    }
-
-
 }
